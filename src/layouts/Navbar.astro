@@ -1,23 +1,30 @@
 ---
 // Optional: Pass in props like title or links in the future
+const currentPath = Astro.url.pathname;
 ---
-
-<nav class="bg-white shadow sticky top-0 z-50" x-data="{ open: false }">
+<!--  store details  -->
+<div class="bg-zinc-950  text-xs hidden md:block">
+    <div class="max-w-7xl mx-auto flex justify-between py-2 md:px-10 lg:px-5">
+        <div class="flex w-64 items-center opacity-75"><img src="./src/assets/icons/Vector.png"><span class="text-amber-500">Location :</span> <span class="text-white">&nbsp;Valencia Negros Oriental</span></div>
+        <div class="flex items-center opacity-75"><img src="./src/assets/icons/Vector-1.png"><span class="ml-1 text-amber-500 ">Opening Hours :</span> <span class="text-white">&nbsp;09 : 00 AM - 11 : 00 PM</span></div>
+    </div>
+</div>
+<nav class="bg-zinc-900 shadow sticky top-0 z-50" x-data="{ open: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <!-- Logo -->
-            <a href="/" class="text-xl font-bold text-blue-600">MySite</a>
+            <a href="/" class="text-xl font-bold text-amber-500">Cafe Mystika</a>
 
             <!-- Desktop Links -->
-            <div class="hidden md:flex space-x-6 items-center">
-                <a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
-                <a href="/blog" class="text-gray-700 hover:text-blue-600">Blog</a>
-                <a href="/about" class="text-gray-700 hover:text-blue-600">About</a>
-                <a href="/contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+            <div class="hidden md:flex space-x-6 items-center text-white">
+                <a href="/" class={`hover:text-amber-500 ${currentPath === '/' ? 'text-amber-500' : ''}`}>Home</a>
+                <a href="/blog" class={`hover:text-amber-500 ${currentPath === '/blog' ? 'text-amber-500' : ''}`}>Blog</a>
+                <a href="/about" class={`hover:text-amber-500 ${currentPath === '/about' ? 'text-amber-500' : ''}`}>About</a>
+                <a href="/contact" class={`hover:text-amber-500 ${currentPath === '/contact' ? 'text-amber-500' : ''}`}>Contact</a>
             </div>
 
             <!-- Mobile Toggle Button -->
-            <button @click="open = !open" class="md:hidden text-gray-700 hover:text-blue-600 focus:outline-none">
+            <button @click="open = !open" class="md:hidden text-white hover:text-amber-500 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
                      viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                     <path x-show="!open" d="M4 6h16M4 12h16M4 18h16" />
@@ -42,7 +49,7 @@
         <a href="/" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
         <a href="/blog" class="block py-2 text-gray-700 hover:text-blue-600">Blog</a>
         <a href="/about" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
-        <a href="/contact" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+        <a href="/contactO" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
     </div>
 
     <!-- Optional: Dark overlay when menu is open -->

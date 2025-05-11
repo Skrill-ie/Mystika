@@ -12,9 +12,20 @@ import "../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Cafe Mystika</title>
+
+		<!-- Alpine Plugins -->
+		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+
+		<!-- Alpine Core -->
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+		<script>
+			document.addEventListener('alpine:init', () => {
+				Alpine.plugin(window.AlpineIntersect);
+			});
+		</script>
 	</head>
-	<body>
+	<body  style="position: relative;">
 		<Navbar />
 		<slot />
 		<Footer/>
@@ -26,6 +37,7 @@ import "../styles/global.css";
 	body {
 		margin: 0;
 		width: 100%;
-		height: 100%;
+		//height: 100%;
+		background: #1F1F1F;
 	}
 </style>

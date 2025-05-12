@@ -142,7 +142,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
             </div>
             <div class="text-left  mx-auto">
                 <div x-data="{ shown: false }"
-                     x-intersect="shown = true"
+                     x-intersect.treshold.25="shown = true"
                      :class="shown ? '-translate-y-10 opacity-100' : 'translate-y-0 opacity-0'"
                      class="transition-all duration-700 ease-out w-full md:w-2/3 mx-auto px-3">
                     <p class="text-4xl md:text-5xl mb-10 text-text-title">A History of <br>Cafe Mystika</p>
@@ -161,7 +161,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
             <div class="absolute md:left-1/2 transform -translate-x-1/2 h-full border-l-8 md:border-l-4 border-gray-300 opacity-55 z-10"></div>
             <div class="flex flex-col gap-8 overflow-hidden">
                 <div x-data="{ shown: false }"
-                     x-intersect="shown = true"
+                     x-intersect.treshold.25="shown = true"
                      :class="shown ? 'translate-x-2 md:translate-x-0 opacity-100' : 'translate-x-10 md:-translate-x-10 opacity-0'"
                      class="transition-all duration-700 ease-out md:w-3/6 z-20"
                 >
@@ -174,7 +174,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                     </div>
                 </div>
                 <div x-data="{ shown: false }"
-                     x-intersect="shown = true"
+                     x-intersect.treshold.25="shown = true"
                      :class="shown ? 'translate-x-2 md:-translate-x-0 opacity-100' : 'translate-x-10 opacity-0'"
                      class="transition-all duration-700 ease-out md:w-3/6 z-20 md:ml-auto"
                 >
@@ -185,7 +185,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                     </div>
                 </div>
                 <div x-data="{ shown: false }"
-                     x-intersect="shown = true"
+                     x-intersect.treshold.25="shown = true"
                      :class="shown ? 'translate-x-2 md:-translate-x-0 opacity-100' : 'translate-x-10 md:-translate-x-10 opacity-0'"
                      class="transition-all duration-700 ease-out md:w-3/6 z-20"
                 >
@@ -196,7 +196,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                     </div>
                 </div>
                 <div x-data="{ shown: false }"
-                     x-intersect="shown = true"
+                     x-intersect.treshold.25="shown = true"
                      :class="shown ? 'translate-x-2 md:-translate-x-0 opacity-100' : 'translate-x-10 opacity-0'"
                      class="transition-all duration-700 ease-out md:w-3/6 z-20 md:ml-auto"
                 >
@@ -207,7 +207,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                     </div>
                 </div>
                 <div x-data="{ shown: false }"
-                     x-intersect="shown = true"
+                     x-intersect.treshold.25="shown = true"
                      :class="shown ? 'translate-x-2 md:-translate-x-0 opacity-100' : 'translate-x-10 md:-translate-x-10 opacity-0'"
                      class="transition-all duration-700 ease-out md:w-3/6 z-20"
                 >
@@ -218,7 +218,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                     </div>
                 </div>
                 <div x-data="{ shown: false }"
-                     x-intersect="shown = true"
+                     x-intersect.treshold.25="shown = true"
                      :class="shown ? 'translate-x-2 md:-translate-x-0 opacity-100' : 'translate-x-10 opacity-0'"
                      class="transition-all duration-700 ease-out md:w-3/6 z-20 md:ml-auto"
                 >
@@ -229,7 +229,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                     </div>
                 </div>
                 <div x-data="{ shown: false }"
-                     x-intersect="shown = true"
+                     x-intersect.treshold.25="shown = true"
                      :class="shown ? 'translate-x-2 md:-translate-x-0 opacity-100' : 'translate-x-10 md:-translate-x-10 opacity-0'"
                      class="transition-all duration-700 ease-out md:w-3/6 z-20"
                 >
@@ -246,7 +246,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
         <div class="text-4xl md:text-5xl mb-10 font-radley text-text-title px-3 ">We Craft Tasty Moments to Remember</div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container mx-auto justify-between gap-5 px-3 md:px-20">
             <div x-data="{ shown: false }"
-                 x-intersect="shown = true"
+                 x-intersect.treshold.25="shown = true"
                  :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
                  class="transition-all duration-700 ease-out"
             >
@@ -256,7 +256,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                 </div>
             </div>
             <div x-data="{ shown: false }"
-                 x-intersect="shown = true"
+                 x-intersect.treshold.25="shown = true"
                  :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
                  class="transition-all duration-900 ease-out"
             >
@@ -266,7 +266,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                 </div>
             </div>
             <div x-data="{ shown: false }"
-                 x-intersect="shown = true"
+                 x-intersect.treshold.25="shown = true"
                  :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
                  class="transition-all duration-1100 ease-out"
             >
@@ -276,7 +276,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                 </div>
             </div>
             <div x-data="{ shown: false }"
-                 x-intersect="shown = true"
+                 x-intersect.treshold.25="shown = true"
                  :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
                  class="transition-all duration-1300 ease-out"
             >
@@ -292,7 +292,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 container mx-auto justify-between gap-10 px-3">
             {sortedBaristaDetail.map((item) => (
                     <div x-data="{ shown: false }"
-                         x-intersect="shown = true"
+                         x-intersect.treshold.25="shown = true"
                          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
                          class="transition-all duration-700 ease-out"
                     >
@@ -312,11 +312,12 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
     <section class="flex items-center justify-center bg-black-secondary font-radley pb-10 md:py-20">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10 container">
             <div class="flex space-x-4 order-2 lg:order-1 mb-4 relative md:mr-10 px-3">
-                <div x-data="{ tab: 'Mission' }" class="container mx-auto w-full md:w-2/3">
+                <div x-data="{ tab: 'Mission' }" class="container mx-auto w-full">
                     <template x-for="t in ['Mission', 'Vision']" :key="t">
+
                         <button
                                 @click="tab = t"
-                                class="relative py-2 pr-4 text-sm font-medium transition-colors duration-500"
+                                class="relative py-2 pr-4 text-sm font-medium transition-colors duration-500 mr-5"
                                 :class="tab === t ? 'text-text-title' : 'text-text-paragraph opacity-50 hover:text-amber-500'"
                         >
                             <span class="text-4xl md:text-5xl mb-10 " x-text="t.replace('tab', 'Tab ')"></span>

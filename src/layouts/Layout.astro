@@ -1,5 +1,6 @@
 ---
 import Navbar from "./Navbar.astro";
+import Socials from '../components/Socials.astro';
 import Footer from "./Footer.astro";
 import "../styles/global.css";
 
@@ -28,6 +29,7 @@ import "../styles/global.css";
 	<body  style="position: relative;">
 		<Navbar />
 		<slot />
+		<Socials/>
 		<Footer/>
 	</body>
 </html>

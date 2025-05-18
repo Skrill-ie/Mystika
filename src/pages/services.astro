@@ -1,8 +1,140 @@
 ---
 import BaseLayout from '../layouts/Layout.astro';
 import HeroSection from "../components/Herosection.astro";
+
+const cocktailPackages = [
+  {
+    title: 'OG Series',
+    subtitle: '(Uses pouring brands)',
+    description: `<ul class="list-disc pl-5 text-left">
+                      <li><b>The OG Series</b> – A tribute to timeless flavors & iconic moments.</li>
+                      <li><b>Signature & Classic</b> – Handpicked favorites from behind the bar.</li>
+                      <li><b>Every Sip, a Story</b> – Crafted with history, heart, and bold character.</li>
+                      <li><b>Revisit or Discover</b> – Rediscover your go-to or meet your next favorite.</li>
+                      <li><b>Crafted with Passion</b> – Where mixology meets legacy.</li>
+                  </ul>`,
+    price: 'Starts @<br><span class="text-4xl">₱10,500</span>/<span class="text-sm">100 PAX</span>',
+  },
+  {
+    title: 'Fruity and Floral',
+    description: `<ul class="list-disc pl-5 text-left">
+                    <li><b>Fruity & Floral Package</b> – Where fresh meets finesse.</li>
+                    <li><b>Juicy Meets Elegant</b> – Ripe fruits + delicate floral infusions.</li>
+                    <li><b>Handcrafted Creations</b> – Signature cocktails & bespoke blends.</li>
+                    <li><b>Aromatic & Refreshing</b> – Bursting with flavor, fragrance & charm.</li>
+                    <li><b>Nature-Inspired Sophistication</b> – Bright, tropical, or soft & fragrant.</li>
+                    <li><b>Elevate Every Sip</b> – A sensory journey in every glass.</li>
+                  </ul>`,
+    price: 'Starts @<br><span class="text-4xl">₱12,000</span>/<span class="text-sm">100 PAX</span>',
+  },
+  {
+    title: 'Exclusive',
+    description: `<ul class="list-disc pl-5 text-left">
+                    <li><b>The Exclusive Package</b> – Refined spirits, timeless sophistication.</li>
+                    <li><b>Rich & Earthy</b> – Top-shelf whiskeys, rums, and brandies.</li>
+                    <li><b>Crafted for the Discerning</b> – Bold flavor meets elegant execution.</li>
+                    <li><b>Classics Reimagined</b> – Masterfully balanced & deeply complex.</li>
+                    <li><b>Authentic Luxury</b> – A curated experience in every sip.</li>
+                  </ul>`,
+    price: 'Starts @<br><span class="text-4xl">₱18,500</span>/<span class="text-sm">50 PAX</span>',
+  },
+];
+
+const coffeePackages = [
+  {
+    title: 'Moka Package',
+    description: `<ul class="list-disc pl-5 text-left">
+                    <li><b>Bold & Smooth</b> – Brewed to impress, every cup delivers rich flavor.</li>
+                    <li><b>Artisan Energy</b> – Classic Moka Pot magic with a modern edge.</li>
+                    <li><b>Elevate Every Gathering</b> – Simple to brew, unforgettable to serve.</li>
+                    <li><b>Pure or Creative</b> – Enjoy it black or with your signature twist.</li>
+                    <li><b>Warmth in Every Pour</b> – Comfort, charm, and caffeine in one package.</li>
+                </ul>`,
+    price: 'Starts @<br><span class="text-4xl">₱9,500</span>',
+  },
+  {
+    title: 'Espresso Package',
+    description: `<ul class="list-disc pl-5 text-left">
+                    <li><b>Café-Quality at Home</b> – Brewed to perfection, every single pour.</li>
+                    <li><b>Bold to Creamy</b> – Enjoy rich shots or silky-smooth lattes.</li>
+                    <li><b>Precision & Balance</b> – Smooth, bold, and never bitter.</li>
+                    <li><b>Loved by Guests</b> – Impress coffee lovers with every cup.</li>
+                    <li><b>Craft in Every Cup</b> – Perfect for enthusiasts and casual sippers alike.</li>
+                </ul>`,
+    price: 'Starts @<br><span class="text-4xl">₱11,500</span>',
+  },
+];
 ---
-<BaseLayout title="About Us">
-    <h2 class="text-2xl font-semibold mb-4">Services</h2>
-    <HeroSection/>
+<BaseLayout title="Services">
+  <section class="flex flex-col items-center text-center">
+    <h2 class="text-5xl text-text-paragraph mb-4 mt-4 w-full mx-auto">Services</h2>
+    <div class="text-2xl text-text-paragraph max-w-6xl mx-[100px] mb-4 mt-4">
+      Café Mystika brings craft coffee and cocktails to your gatherings with curated packages made for every mood. From rich moka brews and smooth espresso shots to vibrant fruity blends and refined signature cocktails, each sip is thoughtfully prepared to impress, connect, and elevate your experience.
+    </div>
+    <h2 class="text-3xl text-text-paragraph mb-4 mt-16 w-full mx-auto font-bold">Cocktail Packages</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mt-5">
+      {cocktailPackages.map((pkg, idx) => (
+        <div 
+          x-data="{ hover: false }"
+          @mouseenter="hover = true"
+          @mouseleave="hover = false"
+          class="relative rounded-tl-2xl rounded-br-2xl shadow p-6 flex flex-col items-center transition-colors duration-300 border-2 fade-in-up"
+          :class="hover ? 'bg-button-active text-[#242424] border-[#242424] -translate-y-2 transition-transform' : 'bg-black-secondary transition-transform text-text-paragraph border-button-active translate-y-0'"
+          style={`animation-delay: ${idx * 120}ms`}
+        >
+          <h3 
+            class="text-xl font-bold mb-2 text-center"
+            :class="!hover ? 'text-text-title duration-300' : ''"
+          >
+            {pkg.title}
+            {pkg.subtitle && <br />}
+            {pkg.subtitle && (
+              <span class="text-base font-normal">{pkg.subtitle}</span>
+            )}
+          </h3>
+          <div 
+            class="font-semibold mb-2 text-center text-2xl"
+            :class="!hover ? 'text-amber-500 duration-300' : 'text-[#242424] duration-300'"
+            set:html={pkg.price}
+          ></div>
+          <div class="mb-7 text-left" set:html={pkg.description}></div>
+          <button
+            class="absolute right-0 bottom-0 px-3 py-1.5 bg-button-active text-[#242424] font-semibold rounded-tl-lg rounded-br-lg hover:bg-[#242424] hover:text-button-active transition-colors duration-300"
+            style="box-shadow: -4px -4px 12px 0 rgba(0,0,0,0.25);"
+            type="button"
+          >
+            Learn More
+          </button>
+        </div>
+      ))}
+    </div>
+    <h2 class="text-3xl text-text-paragraph mb-4 mt-16 w-full mx-auto font-bold">Coffee Packages</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-14 mt-5 justify-center mx-auto">
+      {coffeePackages.map((pkg, idx) => (
+        <div 
+          x-data="{ hover: false }"
+          @mouseenter="hover = true"
+          @mouseleave="hover = false"
+          class="relative rounded-tl-2xl rounded-br-2xl shadow p-6 flex flex-col items-center transition-transform duration-300 border-2 fade-in-up"
+          :class="hover ? 'bg-button-active text-[#242424] border-[#242424] -translate-y-2 transition-colors' : 'bg-black-secondary transition-colors text-text-paragraph border-button-active translate-y-0'"
+          style={`animation-delay: ${idx * 120}ms`}
+        >
+          <h3 class="text-xl font-bold mb-2 text-center">{pkg.title}</h3>
+          <div 
+            class="font-semibold mb-2 text-center text-2xl"
+            :class="!hover ? 'text-amber-500 duration-300' : 'text-[#242424] duration-300'"
+            set:html={pkg.price}
+          ></div>
+          <div class="mb-7 text-left" set:html={pkg.description}></div>
+          <button
+            class="absolute right-0 bottom-0 px-3 py-1.5 bg-button-active text-[#242424] font-semibold rounded-tl-lg rounded-br-lg hover:bg-[#242424] hover:text-button-active transition-colors duration-300"
+            style="box-shadow: -4px -4px 12px 0 rgba(0,0,0,0.25);"
+            type="button"
+          >
+            Learn More
+          </button>
+        </div>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

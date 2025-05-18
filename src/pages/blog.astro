@@ -1,9 +1,49 @@
 ---
 import BaseLayout from '../layouts/Layout.astro';
 import HeroSection from "../components/Herosection.astro";
+const blogs =  [
+    {
+        blogImage:('/images/blog/champ-1st-placer.jpg'),
+        title: "Cafe Mystika’s CHAMP Shines at BarChef 8!",
+        date: 'May 4, 2025',
+        link: "blogs/barchef8"
+    },
+    {
+        blogImage: ('/images/blog/anniversary.png'),
+        title: "1 Year of Magic & Coffee!",
+        date: 'April 8, 2025',
+        link: "blogs/anniversary"
+    },
+    {
+        blogImage: ('/images/blog/crochet-blog.jpg'),
+        title: 'Hooks & Threads with Tonya – Wrapped Up!',
+        date: 'Febuary 09, 2025',
+        link: "blogs/crochet-session"
+    },
+    {
+        blogImage: ('/images/blog/blog-flairnjams-portrait.png'),
+        title: 'Flair n’ Jams: Mystika Team Goes All In!',
+        date: 'March 30, 2025',
+        link: "blogs/flairnjams"
+    },
+]
 ---
 
 <BaseLayout title="Blog">
     <HeroSection/>
-    <h2 class="text-2xl font-semibold mb-4">Blog</h2>
+    <div class="container py-20 mx-auto pb-10">
+        <div class="w-full lg:col-span-2 px-3 lg:pl-10"> <!--divide section 1-->
+            <div class="grid gap-5 lg:gap-10 grid-cols-1 md:grid-cols-3">
+                {blogs.map((item)=>(
+                        <a href={ item.link }>
+                            <div @click="toggleBlogModal(blog)">
+                                <div class="bg-black h-96 overflow-hidden flex"><img src={item.blogImage} class="m-auto w-full"></div>
+                                <div class="text-lg lg:text-2xl text-text-paragraph font-radley text-left pt-4 text-ellipsis">{ item.title }</div>
+                                <div class="text-xs lg:text-sm text-left text-gray-500 font-radley pt-3 lg:pt-7">{ item.date }</div>
+                            </div>
+                        </a>
+                    ))}
+            </div>
+        </div>
+    </div>
 </BaseLayout>

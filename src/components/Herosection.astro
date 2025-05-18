@@ -5,17 +5,17 @@ let mainText = "";
 let subText = ""
 switch(currentPath){
     case  "/":
-        backgroundImage = "./src/assets/images/herobackground2.png";
+        backgroundImage = "/images/herobackground2.png";
         mainText = "Coffee and Memories";
         subText = "Since 2021 , Cafe Mystika has been on a mission to provide sustainable and ethical, hand roasted, specialty coffee  at a fair price for you and the farmers.";
         break;
     case  "/about":
-        backgroundImage = "./src/assets/images/herobackground2.png";
+        backgroundImage = "/images/herobackground2.png";
         mainText = "Meet the dream Team";
         subText = "Get to know the passionate brewers behind every cup, the dream team that turns beans into magic.";
     break;
     case  "/blog":
-        backgroundImage = "./src/assets/images/blog/mystika5.jpg";
+        backgroundImage = "/images/blog/mystika5.jpg";
         mainText = "Brewing Stories One Cup at a Time";
         subText = "Welcome to our cozy blog, where coffee, community, and stories blend into one inviting experience.";
     break;
@@ -30,7 +30,7 @@ switch(currentPath){
             <div class="relative h-full">
                 <div x-data="{ shown: false }" x-intersect.treshold.25="shown = true" class="transition-all duration-700 ease-out">
                     <div x-show="shown" x-transition class="md:text-left absolute inset-x-0 bottom-28">
-                        <h1 class="text-4xl lg:text-6xl text-text-title mb-10 text-center">
+                        <h1 class="text-4xl lg:text-6xl text-text-title mb-10 text-center md:text-left">
                             {mainText}
                         </h1>
                         <div class="text-sm w-full text-center md:text-left lg:w-1/2 ">

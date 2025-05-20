@@ -24,6 +24,9 @@ switch(currentPath){
         mainText = "Brewing Stories One Cup at a Time";
         subText = "Welcome to our cozy blog, where coffee, community, and stories blend into one inviting experience.";
     break;
+    case  "/shop":
+        backgroundImage = "/images/blog/mystika5.jpg";
+    break;
 
 }
 ---
@@ -34,17 +37,17 @@ switch(currentPath){
         style={`background-image: url('${backgroundImage}')`}>
     <div
             class="absolute inset-0 bg-black z-0 transition-opacity duration-300 ease-in-out"
-            :style="`opacity: ${.5 + Math.min(scrollY / 800, 1)}`"
+            :style="`opacity: ${.5 + Math.min(scrollY / 1000, 1)}`"
     ></div>
     <div class="pt-16 sm:pt-0 ">
         <div class="container mx-auto h-screen pb-10 px-5 lg:px-10">
             <div class="relative h-full">
                 <div x-data="{ shown: false }" x-intersect.treshold.25="shown = true" class="transition-all duration-700 ease-out">
-                    <div x-show="shown" x-transition class="md:text-left absolute inset-x-0 bottom-28">
+                    <div x-show="shown" x-transition class="md:text-left absolute inset-x-0 bottom-50">
                         <h1 class="text-4xl lg:text-6xl text-text-title mb-10 text-center md:text-left">
                             {mainText}
                         </h1>
-                        <div class="text-sm w-full text-center md:text-left lg:w-1/2 ">
+                        <div class="text-xl w-full text-center md:text-left lg:w-1/2 ">
                             <p class="mb-10">
                                 {subText}
                             </p>

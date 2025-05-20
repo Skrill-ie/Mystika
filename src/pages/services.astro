@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '../layouts/Layout.astro';
 import HeroSection from "../components/Herosection.astro";
+import OGSeriesImg from '/public/images/services/OG-series.jpg';
+import FruityAndFloralImg from '/public/images/services/fruity-and-floral.jpg';
+import ExlusiveImg from '/public/images/services/exclusive.jpg';
+import MokaImg from '/public/images/services/moka.jpg';
+import EspressoImg from '/public/images/services/espresso.jpg';
 
 const cocktailPackages = [
   {
@@ -13,7 +18,9 @@ const cocktailPackages = [
                       <li><b>Revisit or Discover</b> – Rediscover your go-to or meet your next favorite.</li>
                       <li><b>Crafted with Passion</b> – Where mixology meets legacy.</li>
                   </ul>`,
+    fulldescription: `<b>Discover the OG Series — a tribute to timeless flavors and unforgettable moments.</b> Handpicked from our most loved classics and signature creations, each cocktail tells the story of our journey behind the bar. Whether you're revisiting a favorite or finding a new go-to, every sip captures the essence of our craft, our history, and our passion for the art of mixology.`,
     price: 'Starts @<br><span class="text-4xl">₱10,500</span>/<span class="text-sm">100 PAX</span>',
+    image: OGSeriesImg
   },
   {
     title: 'Fruity and Floral',
@@ -25,7 +32,9 @@ const cocktailPackages = [
                     <li><b>Nature-Inspired Sophistication</b> – Bright, tropical, or soft & fragrant.</li>
                     <li><b>Elevate Every Sip</b> – A sensory journey in every glass.</li>
                   </ul>`,
+    fulldescription: `<b>Experience the Fruity & Floral Package – where fresh meets finesse.</b> This handcrafted cocktail collection celebrates the vibrant fusion of ripe fruits and delicate floral infusions. From signature creations to bespoke masterpieces, each drink is a refreshing sensory journey—bursting with juicy flavors, aromatic syrups, and elegant floral notes. Whether you're craving something bright and tropical or soft and fragrant, this package brings a touch of sophistication and nature-inspired charm to every sip.`,
     price: 'Starts @<br><span class="text-4xl">₱12,000</span>/<span class="text-sm">100 PAX</span>',
+    image : FruityAndFloralImg
   },
   {
     title: 'Exclusive',
@@ -36,7 +45,9 @@ const cocktailPackages = [
                     <li><b>Classics Reimagined</b> – Masterfully balanced & deeply complex.</li>
                     <li><b>Authentic Luxury</b> – A curated experience in every sip.</li>
                   </ul>`,
+    fulldescription: `<b>Elevate your taste with the Exclusive Package – a celebration of refined spirits and timeless sophistication.</b> Crafted for those who appreciate depth, character, and quality, this collection showcases top-shelf whiskeys, rums, and brandies with rich, earthy notes and smooth, crisp finishes. Each cocktail is a masterclass in balance and complexity—whether it’s a reimagined classic or a bespoke creation tailored to your palate. Designed for the discerning, this package delivers bold flavor, elegance, and authenticity in every sip.`,
     price: 'Starts @<br><span class="text-4xl">₱18,500</span>/<span class="text-sm">50 PAX</span>',
+    image: ExlusiveImg
   },
 ];
 
@@ -50,7 +61,9 @@ const coffeePackages = [
                     <li><b>Pure or Creative</b> – Enjoy it black or with your signature twist.</li>
                     <li><b>Warmth in Every Pour</b> – Comfort, charm, and caffeine in one package.</li>
                 </ul>`,
+    fulldescription: `<b>Bold, smooth, and brewed to impress — our Moka Pot Package delivers coffee with character.</b> This method showcases the rich depth of flavor in every cup, offering your guests a simple yet elevated caffeine experience. Whether served pure and black or with a creative twist, each brew brings warmth, energy, and artisanal charm to any gathering.`,
     price: 'Starts @<br><span class="text-4xl">₱9,500</span>',
+    image: MokaImg
   },
   {
     title: 'Espresso Package',
@@ -61,80 +74,127 @@ const coffeePackages = [
                     <li><b>Loved by Guests</b> – Impress coffee lovers with every cup.</li>
                     <li><b>Craft in Every Cup</b> – Perfect for enthusiasts and casual sippers alike.</li>
                 </ul>`,
+    fulldescription: `<b>Brewed to perfection — our Espresso Package delivers café-quality coffee with every pour.</b> From bold shots to creamy lattes, our espresso machine guarantees a smooth, rich, and balanced experience your guests will love. Ideal for coffee enthusiasts and anyone who appreciates craft in every cup.`,
     price: 'Starts @<br><span class="text-4xl">₱11,500</span>',
+    image: EspressoImg
   },
 ];
 ---
 <BaseLayout title="Services">
-  <section class="flex flex-col items-center text-center">
-    <h2 class="text-5xl text-text-paragraph mb-4 mt-4 w-full mx-auto">Services</h2>
-    <div class="text-2xl text-text-paragraph max-w-6xl mx-[100px] mb-4 mt-4">
-      Café Mystika brings craft coffee and cocktails to your gatherings with curated packages made for every mood. From rich moka brews and smooth espresso shots to vibrant fruity blends and refined signature cocktails, each sip is thoughtfully prepared to impress, connect, and elevate your experience.
-    </div>
-    <h2 class="text-3xl text-text-paragraph mb-4 mt-16 w-full mx-auto font-bold">Cocktail Packages</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mt-5">
-      {cocktailPackages.map((pkg, idx) => (
+  <HeroSection/>
+  <section class="flex flex-col items-center px-3 text-center">
+    <div x-data="{ openIndex: null, hovered: null }">
+        
+        <!-- Cocktail Packages -->
+        <h2 class="text-3xl text-text-title mb-4 mt-16 w-full mx-auto font-bold">Cocktail Packages</h2>
         <div 
-          x-data="{ hover: false }"
-          @mouseenter="hover = true"
-          @mouseleave="hover = false"
-          class="relative rounded-tl-2xl rounded-br-2xl shadow p-6 flex flex-col items-center transition-colors duration-300 border-2 fade-in-up"
-          :class="hover ? 'bg-button-active text-[#242424] border-[#242424] -translate-y-2 transition-transform' : 'bg-black-secondary transition-transform text-text-paragraph border-button-active translate-y-0'"
-          style={`animation-delay: ${idx * 120}ms`}
+          x-data="{ shown: false }"
+          x-intersect.treshold.25="shown = true"
+          :class="shown ? '-translate-y-0 opacity-100' : 'translate-y-10 opacity-0'"
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mt-5 justify-center mx-auto transition-all duration-700 ease-out"
         >
-          <h3 
-            class="text-xl font-bold mb-2 text-center"
-            :class="!hover ? 'text-text-title duration-300' : ''"
+        {cocktailPackages.map((pkg, idx) => (
+          <div
+            @mouseenter={`if (openIndex === null) hovered = ${idx}`}
+            @mouseleave={`if (openIndex === null || openIndex === ${idx}) hovered = null`}
+            :class={`(openIndex === ${idx} || (openIndex === null && hovered === ${idx})) ? "bg-button-active border-[#242424] -translate-y-2" : "bg-black-secondary text-text-paragraph border-button-active"`}
+            class="group relative rounded-tl-2xl rounded-br-2xl shadow p-6 flex flex-col items-center border-3 fade-in-up transition-all duration-300 hover:transition-transform bg-black-secondary text-[#242424] border-button-active"
+            style={`animation-delay: ${idx * 120}ms`}
           >
-            {pkg.title}
-            {pkg.subtitle && <br />}
-            {pkg.subtitle && (
-              <span class="text-base font-normal">{pkg.subtitle}</span>
-            )}
-          </h3>
+            <h3 class="text-xl font-bold mb-2 text-center">
+              {pkg.title}
+              {pkg.subtitle && <br />}
+              {pkg.subtitle && (
+                <span class="text-base font-normal">{pkg.subtitle}</span>
+              )}
+            </h3>
+            <div
+              set:html={pkg.price}
+              :class={`(openIndex === ${idx} || (openIndex === null && hovered === ${idx})) ? 'text-[#242424]' : 'text-amber-500'`}
+              class="font-semibold mb-2 text-center text-2xl duration-300"
+            ></div>
+            <div class="mb-7 text-left" set:html={pkg.description}></div>
+            <button
+              class="absolute px-3 py-1.5 bg-button-active text-[#242424] font-semibold rounded-tl-lg rounded-br-lg hover:bg-[#242424] hover:text-button-active transition-colors duration-300 flex items-center gap-2"
+              style="box-shadow: -4px -4px 12px 0 rgba(0,0,0,0.25); bottom: calc(var(--spacing) * -0.6); right: calc(var(--spacing) * -0.5);"
+              type="button"
+              @click={`openIndex === ${idx} ? openIndex = null : openIndex = ${idx}; hovered = null`}
+            >
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-300" :class="openIndex === ${idx} ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div
+              x-show={`openIndex === ${idx}`}
+              x-transition:enter="transition-all duration-500"
+              x-transition:enter-start="opacity-0 max-h-0"
+              x-transition:enter-end="opacity-100 max-h-[600px]"
+              x-transition:leave="transition-all duration-300"
+              x-transition:leave-start="opacity-100 max-h-[600px]"
+              x-transition:leave-end="opacity-0 max-h-0"
+              class="w-full overflow-hidden flex flex-col items-center mt-6"
+              style="will-change: max-height;"
+            >
+              <img src={pkg.image.src ?? pkg.image} alt="" class="w-full max-w-xs rounded-xl mb-4" />
+              <div class="text-left mb-7" set:html={pkg.fulldescription}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Coffee Packages -->
+      <h2 class="text-3xl text-text-title mb-4 mt-16 w-full mx-auto font-bold">Coffee Packages</h2>
+      <div
+        x-data="{ shown: false }"
+        x-intersect.treshold.25="shown = true"
+        :class="shown ? '-translate-y-0 opacity-100' : 'translate-y-10 opacity-0'"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-14 mt-5 justify-center mx-auto transition-all duration-700 ease-out"
+      >
+        {coffeePackages.map((pkg, idx) => (
           <div 
-            class="font-semibold mb-2 text-center text-2xl"
-            :class="!hover ? 'text-amber-500 duration-300' : 'text-[#242424] duration-300'"
-            set:html={pkg.price}
-          ></div>
-          <div class="mb-7 text-left" set:html={pkg.description}></div>
-          <button
-            class="absolute right-0 bottom-0 px-3 py-1.5 bg-button-active text-[#242424] font-semibold rounded-tl-lg rounded-br-lg hover:bg-[#242424] hover:text-button-active transition-colors duration-300"
-            style="box-shadow: -4px -4px 12px 0 rgba(0,0,0,0.25);"
-            type="button"
+            x-data
+            @mouseenter={`if (openIndex === null) hovered = ${idx + 100}`}
+            @mouseleave={`if (openIndex === null || openIndex === ${idx + 100}) hovered = null`}
+            :class={`(openIndex === ${idx + 100} || (openIndex === null && hovered === ${idx + 100})) ? "bg-button-active border-[#242424] -translate-y-2" : "bg-black-secondary text-text-paragraph border-button-active"`}
+            class="group relative rounded-tl-2xl rounded-br-2xl shadow p-6 flex flex-col items-center border-3 fade-in-up transition-all duration-300 hover:transition-transform bg-black-secondary text-[#242424] border-button-active"
+            style={`animation-delay: ${idx * 120}ms`}
           >
-            Learn More
-          </button>
-        </div>
-      ))}
-    </div>
-    <h2 class="text-3xl text-text-paragraph mb-4 mt-16 w-full mx-auto font-bold">Coffee Packages</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-14 mt-5 justify-center mx-auto">
-      {coffeePackages.map((pkg, idx) => (
-        <div 
-          x-data="{ hover: false }"
-          @mouseenter="hover = true"
-          @mouseleave="hover = false"
-          class="relative rounded-tl-2xl rounded-br-2xl shadow p-6 flex flex-col items-center transition-transform duration-300 border-2 fade-in-up"
-          :class="hover ? 'bg-button-active text-[#242424] border-[#242424] -translate-y-2 transition-colors' : 'bg-black-secondary transition-colors text-text-paragraph border-button-active translate-y-0'"
-          style={`animation-delay: ${idx * 120}ms`}
-        >
-          <h3 class="text-xl font-bold mb-2 text-center">{pkg.title}</h3>
-          <div 
-            class="font-semibold mb-2 text-center text-2xl"
-            :class="!hover ? 'text-amber-500 duration-300' : 'text-[#242424] duration-300'"
-            set:html={pkg.price}
-          ></div>
-          <div class="mb-7 text-left" set:html={pkg.description}></div>
-          <button
-            class="absolute right-0 bottom-0 px-3 py-1.5 bg-button-active text-[#242424] font-semibold rounded-tl-lg rounded-br-lg hover:bg-[#242424] hover:text-button-active transition-colors duration-300"
-            style="box-shadow: -4px -4px 12px 0 rgba(0,0,0,0.25);"
-            type="button"
-          >
-            Learn More
-          </button>
-        </div>
-      ))}
+            <h3 class="text-xl font-bold mb-2 text-center">{pkg.title}</h3>
+            <div 
+              set:html={pkg.price}
+              :class={`(openIndex === ${idx + 100} || (openIndex === null && hovered === ${idx + 100})) ? 'text-[#242424]' : 'text-amber-500'`}
+              class="font-semibold mb-2 text-center text-2xl duration-300"
+            ></div>
+            <div class="mb-7 text-left" set:html={pkg.description}></div>
+            <button
+              class="absolute px-3 py-1.5 bg-button-active text-[#242424] font-semibold rounded-tl-lg rounded-br-lg hover:bg-[#242424] hover:text-button-active transition-colors duration-300 flex items-center gap-2"
+              style="box-shadow: -4px -4px 12px 0 rgba(0,0,0,0.25); bottom: calc(var(--spacing) * -0.6); right: calc(var(--spacing) * -0.5);"
+              type="button"
+              @click={`openIndex === ${idx + 100} ? openIndex = null : openIndex = ${idx + 100}; hovered = null`}
+            >
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-300" :class={`openIndex === ${idx + 100} ? 'rotate-180' : ''`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div
+              x-show={`openIndex === ${idx + 100}`}
+              x-transition:enter="transition-all duration-500"
+              x-transition:enter-start="opacity-0 max-h-0"
+              x-transition:enter-end="opacity-100 max-h-[600px]"
+              x-transition:leave="transition-all duration-300"
+              x-transition:leave-start="opacity-100 max-h-[600px]"
+              x-transition:leave-end="opacity-0 max-h-0"
+              class="w-full overflow-hidden flex flex-col items-center mt-6"
+              style="will-change: max-height;"
+            >
+              <img src={pkg.image.src ?? pkg.image} alt="" class="w-full max-w-xs rounded-xl mb-4" />
+              <div class="text-left mb-7" set:html={pkg.fulldescription}></div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>

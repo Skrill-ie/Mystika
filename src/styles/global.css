@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-    --font-display: "Satoshi", "sans-serif";
+    --font-display: "Radley", "serif";
     --breakpoint-3xl: 120rem;
     --color-black-primary:#242424;
     --color-black-secondary:#1F1F1F;

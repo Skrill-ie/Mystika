@@ -8,6 +8,6 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
     site: 'https://skrill-ie.github.io',
-    base:'/Mystika',
+    base:'/Mystika/',
 
 });

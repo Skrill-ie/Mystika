@@ -7,5 +7,7 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()],
     },
+    site: 'https://skrill-ie.github.io',
     base:'/Mystika',
+
 });

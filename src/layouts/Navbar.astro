@@ -6,12 +6,12 @@ const currentPath = Astro.url.pathname;
     <div class="bg-black-primary text-xs hidden md:block">
         <div class="container mx-auto flex justify-between py-2 md:px-10 lg:px-5">
             <div class="flex w-64 items-center">
-                <img src="/icons/Vector.png" />
+                <img src="/Mystika/icons/Vector.png" />
                 <span class="text-text-divider">Location :</span>
                 <span class="text-text-paragraph"> Valencia Negros Oriental</span>
             </div>
             <div class="flex items-center">
-                <img src="/icons/Vector-1.png" />
+                <img src="/Mystika/icons/Vector-1.png" />
                 <span class="ml-1 text-text-divider">Opening Hours :</span>
                 <span class="text-text-paragraph"> 10 : 00 AM - 11 : 00 PM</span>
             </div>
@@ -22,19 +22,19 @@ const currentPath = Astro.url.pathname;
         <div class="flex justify-between h-16 items-center">
             <!-- Logo -->
             <a href="/" class="text-xl font-bold text-amber-500 flex">
-                <img class="block md:hidden" src="/icons/cafe-mystika-icon.png" />
-                <img class="md:block hidden w-full h-10" src="/icons/cafe-mystika-word.png" />
+                <img class="block md:hidden" src=/Mystika/icons/cafe-mystika-icon.png')} />
+                <img class="md:block hidden w-full h-10" src="/Mystika/icons/cafe-mystika-word.png" />
             </a>
 
             <!-- Desktop Links -->
             <div class="hidden md:flex space-x-6 items-center text-text-paragraph">
-                <a href="/" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/' ? 'text-button-active' : ''}`}>Home</a>
-                <a href="/services" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/services' ? 'text-button-active' : ''}`}>Services</a>
-                <a href="/blog" class={`hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/blog')  ? 'text-button-active' : ''}`}>Blog</a>
-                <a href="/about" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/about' ? 'text-button-active' : ''}`}>About</a>
-                <a href="/contact" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/contact' ? 'text-button-active' : ''}`}>Contact</a>
-                <a href="/shop"class={`hover:bg-amber-500 rounded p-2 transition-all duration-300 ${currentPath === '/shop' ? 'bg-button-active' : ''}`}>
-                    <img class="w-5" src="/icons/shop-icon.png" />
+                <a href="/Mystika/" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/' ? 'text-button-active' : ''}`}>Home</a>
+                <a href="/Mystika/services" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/services' ? 'text-button-active' : ''}`}>Services</a>
+                <a href="/Mystika/blog" class={`hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/Mystika/blog')  ? 'text-button-active' : ''}`}>Blog</a>
+                <a href="/Mystika/about" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/about' ? 'text-button-active' : ''}`}>About</a>
+                <a href="/Mystika/contact" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/contact' ? 'text-button-active' : ''}`}>Contact</a>
+                <a href="/Mystika/shop" class={`hover:bg-amber-500 rounded p-2 transition-all duration-300 ${currentPath === '/Mystika/shop' ? 'bg-button-active' : ''}`}>
+                    <img class="w-5" src="/Mystika/icons/shop-icon.png" />
                 </a>
             </div>
 
@@ -62,15 +62,15 @@ const currentPath = Astro.url.pathname;
             @click.outside="open = false"
     >
         <div>
-            <img src="/images/Group-45.png"/>
+            <img src="/Mystika/images/Group-45.png"/>
         </div>
         <div class="p-6">
-            <a href="/" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/' ? 'text-button-active' : ''}`}>Home</a>
-            <a href="/services" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/services' ? 'text-button-active' : ''}`}>Services</a>
-            <a href="/blog" class={`hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/blog') ? 'text-button-active' : ''}`}>Blog</a>
-            <a href="/about" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/about' ? 'text-button-active' : ''}`}>About</a>
-            <a href="/contact" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/contact' ? 'text-button-active' : ''}`}>Contact</a>
-            <a href="/shop" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/shop' ? 'text-button-active' : ''}`}>Shop</a>
+            <a href="/Mystika/" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/' ? 'text-button-active' : ''}`}>Home</a>
+            <a href="/Mystika/services" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/services' ? 'text-button-active' : ''}`}>Services</a>
+            <a href="/Mystika/blog" class={`hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/Mystika/blog') ? 'text-button-active' : ''}`}>Blog</a>
+            <a href="/Mystika/about" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/about' ? 'text-button-active' : ''}`}>About</a>
+            <a href="/Mystika/contact" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/contact' ? 'text-button-active' : ''}`}>Contact</a>
+            <a href="/Mystika/shop" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/Mystika/shop' ? 'text-button-active' : ''}`}>Shop</a>
         </div>
     </div>
 

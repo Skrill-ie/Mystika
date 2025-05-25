@@ -244,11 +244,11 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
     </section>
     <section class="bg-fixed py-10 text-center" style=" background-image:url(/Mystika/images/Background.png)">
         <div class="text-4xl md:text-5xl mb-10 font-radley text-text-title px-3 ">We Craft Tasty Moments to Remember</div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container mx-auto justify-between gap-5 px-3 md:px-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container mx-auto justify-between gap-5 px-3 md:px-20">
             <div x-data="{ shown: false }"
                  x-intersect.treshold.25="shown = true"
                  :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
-                 class="transition-all duration-700 ease-out"
+                 class="transition-all duration-700 ease-out mx-auto w-full"
             >
                 <div x-show="shown" x-transition class="h-60 w-full lg:w-60 bg-black-primary p-8 flex flex-col justify-center">
                     <img class="mx-auto w-16 h-16" src="/Mystika/icons/drying.png">
@@ -258,7 +258,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
             <div x-data="{ shown: false }"
                  x-intersect.treshold.25="shown = true"
                  :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
-                 class="transition-all duration-900 ease-out"
+                 class="transition-all duration-900 ease-out mx-auto w-full"
             >
                 <div x-show="shown" x-transition class="h-60 w-full lg:w-60 bg-black-primary p-8 flex flex-col justify-center">
                     <img class="mx-auto w-16 h-16" src="/Mystika/icons/roasting.png">
@@ -268,7 +268,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
             <div x-data="{ shown: false }"
                  x-intersect.treshold.25="shown = true"
                  :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
-                 class="transition-all duration-1100 ease-out"
+                 class="transition-all duration-1100 ease-out mx-auto w-full"
             >
                 <div x-show="shown" x-transition class="h-60 w-full lg:w-60 bg-black-primary p-8 flex flex-col justify-center">
                     <img class="mx-auto w-16 h-16" src="/Mystika/icons/grinding.png">
@@ -278,7 +278,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
             <div x-data="{ shown: false }"
                  x-intersect.treshold.25="shown = true"
                  :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
-                 class="transition-all duration-1300 ease-out"
+                 class="transition-all duration-1300 ease-out mx-auto w-full"
             >
                 <div x-show="shown" x-transition class="h-60 w-full lg:w-60 bg-black-primary p-8 flex flex-col justify-center">
                     <img class="mx-auto w-16 h-16" src="/Mystika/icons/done.png">
@@ -296,7 +296,7 @@ const sortedBaristaDetail = baristaDetail.sort((a, b) => {
                          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'"
                          class="transition-all duration-700 ease-out"
                     >
-                        <div x-show="shown" x-transition class="h-96 mx-auto w-full sm:w-3/4 md:w-full relative bg-center"
+                        <div x-show="shown" x-transition class="h-96 mx-auto w-full sm:w-3/4 md:w-full relative bg-center bg-cover bg-norepeat"
                              style={`background-image: url('${item.baristaImage}')`}>
                             <div class=" lg:-mt-14 px-5 z-10 absolute -bottom-5 left-0 w-full">
                                 <div class="bg-black-secondary py-3 font-radley shadow">

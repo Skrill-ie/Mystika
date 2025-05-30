@@ -29,11 +29,11 @@ const currentPath = Astro.url.pathname;
             <!-- Desktop Links -->
             <div class="hidden md:flex space-x-6 items-center text-text-paragraph">
                 <a href="/" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/' ? 'text-button-active' : ''}`}>Home</a>
-                <a href="/services" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/services' ? 'text-button-active' : ''}`}>Services</a>
+                <a href="/services" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/services/' ? 'text-button-active' : ''}`}>Services</a>
                 <a href="/blog" class={`hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/blog')  ? 'text-button-active' : ''}`}>Blog</a>
-                <a href="/about" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/about' ? 'text-button-active' : ''}`}>About</a>
-                <a href="/contact" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/contact' ? 'text-button-active' : ''}`}>Contact</a>
-                <a href="/shop" class={`hover:bg-amber-500 rounded p-2 transition-all duration-300 ${currentPath === '/shop' ? 'bg-button-active' : ''}`}>
+                <a href="/about" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/about/' ? 'text-button-active' : ''}`}>About</a>
+                <a href="/contact" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/contact/' ? 'text-button-active' : ''}`}>Contact</a>
+                <a href="/shop" class={`hover:bg-amber-500 rounded p-2 transition-all duration-300 ${currentPath === '/shop/' ? 'bg-button-active' : ''}`}>
                     <img class="w-5" src="/icons/shop-icon.png" />
                 </a>
             </div>

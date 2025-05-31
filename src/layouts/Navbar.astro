@@ -7,13 +7,13 @@ const currentPath = Astro.url.pathname;
         <div class="container mx-auto flex justify-between py-2 md:px-10 lg:px-5">
             <div class="flex w-64 items-center">
                 <img src="/icons/Vector.png" />
-                <span class="text-text-divider">Location :</span>
+                <span class="text-text-divider">Location : &nbsp;</span>
                 <span class="text-text-paragraph"> Valencia Negros Oriental</span>
             </div>
             <div class="flex items-center">
                 <img src="/icons/Vector-1.png" />
-                <span class="ml-1 text-text-divider">Opening Hours :</span>
-                <span class="text-text-paragraph"> 10 : 00 AM - 11 : 00 PM</span>
+                <span class="ml-1 text-text-divider">Opening Hours : &nbsp;</span>
+                <span class="text-text-paragraph"> 9 : 00 AM - 11 : 00 PM</span>
             </div>
         </div>
     </div>
@@ -66,11 +66,11 @@ const currentPath = Astro.url.pathname;
         </div>
         <div class="p-6">
             <a href="/" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/' ? 'text-button-active' : ''}`}>Home</a>
-            <a href="/services" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/services' ? 'text-button-active' : ''}`}>Services</a>
+            <a href="/services" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/services/' ? 'text-button-active' : ''}`}>Services</a>
             <a href="/blog" class={`hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/blog') ? 'text-button-active' : ''}`}>Blog</a>
-            <a href="/about" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/about' ? 'text-button-active' : ''}`}>About</a>
-            <a href="/contact" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/contact' ? 'text-button-active' : ''}`}>Contact</a>
-            <a href="/shop" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/shop' ? 'text-button-active' : ''}`}>Shop</a>
+            <a href="/about" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/about/' ? 'text-button-active' : ''}`}>About</a>
+            <a href="/contact" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/contact/' ? 'text-button-active' : ''}`}>Contact</a>
+            <a href="/shop" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/shop/' ? 'text-button-active' : ''}`}>Shop</a>
         </div>
     </div>
 

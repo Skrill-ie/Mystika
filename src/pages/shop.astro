@@ -2,32 +2,15 @@
 import BaseLayout from '../layouts/Layout.astro';
 import HeroSection from "../components/Herosection.astro";
 
-const merch = [
-    {
-        merchName: "Labarento",
-        merchPoster: "/images/MERCH-V1.png",
-        merchImages: [
-            "/images/merch2.JPG",
-            "/images/merch3.JPG",
-            "/images/merch4.JPG"
-        ],
-        merchPrice: "750.00",
-    },
-    {
-        merchName: "Orcullo",
-        merchPoster: "/images/MERCH-V2.png",
-        merchImages: [
-            "/images/orcullo2.jpg",
-            "/images/orcullo3.jpg",
-        ],
-        merchPrice: "750.00",
-    },
-    {
-        merchName: "Nicy Genie",
-        merchPoster: "/images/nicygenie.png",
-        merchPrice: "750.00",
-    },
-];
+const response = await fetch('https://script.google.com/macros/s/AKfycbyUF8L2v6oqV2nuIotieuCdrc0nSbImlnBzMYcK3F5_koMHceRcgjbpkULnHyVjgQzH/exec');
+let merch = await response.json();
+
+merch = merch.map(item => ({
+  ...item,
+  MerchImages: item.MerchImages
+    ? item.MerchImages.split(',').map(url => url.trim())
+    : []
+}));
 ---
 <BaseLayout title="Shop">
     <!--<HeroSection/>-->
@@ -35,61 +18,66 @@ const merch = [
         <h1 class="text-4xl lg:text-6xl text-text-title  text-center mt-10 "> Mystika Collaborations </h1>
         <div class="border-text-divider max-w-lg mx-auto my-5 border-b-2"></div>
         <p class="text-center text-sm md:text-2xl text-text-paragraph opacity-65 mb-10">Showcasing our creative brews and the brilliant minds we've partnered with <br> from local artists to community changemakers.</p>
-        <div
-                x-data="{ showModal: false, selectedItem: null }"
-                class="relative mt-30"
-        >
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 container mx-auto">
-                {merch.map((item) => (
-                    <div class="mb-10 md:p-5 hover:scale-110 hover:bg-black-primary hover:shadow-lg rounded  transition duration-150 ease-in-out "
-                         @click={`selectedItem = ${JSON.stringify(item)}; showModal = true`}>
-                        <img src={item.merchPoster} alt={item.merchName} class="w-full h-auto object-cover rounded" />
-                        <div class="flex justify-between pt-3">
-                            <h2 class="text-lg font-bold text-text-title">{item.merchName}</h2>
-                            <span class="text-text-divider">₱{item.merchPrice}</span>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <!-- Modal -->
-            <div
-                    x-show="showModal"
-                    x-transition
-                    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
-            >
-                <div
-                        class="bg-white rounded-lg max-w-2xl relative"
-                        @click.outside="showModal = false"
-                >
-                    <button
-                            class="absolute top-2 right-2 text-text-paragraph hover:text-black bg-text-divider p-2 text-xl"
-                            @click="showModal = false"
-                    >
-                        &times;
-                    </button>
-
-                    <template x-if="selectedItem">
-                        <div class="bg-black-primary">
-                                <div :class="{
-                                        'grid-cols-1': selectedItem.merchImages.length === 1,
-                                        'grid-cols-2': selectedItem.merchImages.length === 2,
-                                        'grid-cols-3': selectedItem.merchImages.length >= 3
-                                      }"
-                                     class="grid mb-4 bg-black-secondary">
-                                    <template x-for="image in selectedItem.merchImages" :key="image">
-                                        <img :src="image" class="w-full h-auto m-auto" />
-                                    </template>
-                                </div>
-                            <div class="p-5">
-                                <h2 class="text-2xl font-bold text-text-title" x-text="selectedItem.merchName"></h2>
-                                <p class="text-text-divider mt-2">₱<span x-text="selectedItem.merchPrice"></span></p>
-                                <p class="mt-4 text-text-paragraph">More details or description can be added here.</p>
-                                <a target="_blank" href="https://m.me/CafeMystika" class="w-full bg-text-divider mt-10 text-text-paragraph block text-center py-5">Let's Connect!</a>
-                            </div>
-                        </div>
-                    </template>
+        <div x-data="{ showModal: false, selectedItem: null }">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 container mx-auto">
+            {merch.map((item) => (
+              <div
+                class="mb-10 md:p-5 hover:scale-110 hover:bg-black-primary hover:shadow-lg rounded transition duration-150 ease-in-out"
+                data-item={JSON.stringify(item)}
+                @click="
+                    selectedItem = JSON.parse($el.dataset.item);
+                    showModal = true
+                "
+              >
+                <img src={item.MerchPoster} alt={item.MerchName} class="w-full h-auto object-cover rounded" />
+                <div class="flex justify-between pt-3">
+                  <h2 class="text-lg font-bold text-text-title">{item.MerchName}</h2>
+                  <span class="text-text-divider">₱{item.MerchPrice}</span>
                 </div>
+              </div>
+            ))}
+          </div>
+          <!-- Modal -->
+          <div
+            x-show="showModal"
+            x-transition
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+            style="display: none;"
+          >
+            <div
+              class="bg-white rounded-lg max-w-2xl relative"
+              @click.outside="showModal = false"
+            >
+              <button
+                class="absolute top-2 right-2 text-text-paragraph hover:text-black bg-text-divider p-2 text-xl"
+                @click="showModal = false"
+              >
+                &times;
+              </button>
+              <template x-if="selectedItem">
+                <div class="bg-black-primary">
+                  <div
+                    class="grid mb-4 bg-black-secondary"
+                    :class="selectedItem.MerchImages.length === 1
+                      ? 'grid-cols-1'
+                      : selectedItem.MerchImages.length === 2
+                      ? 'grid-cols-2'
+                      : 'grid-cols-3'"
+                  >
+                    <template x-for="(image, idx) in selectedItem.MerchImages" :key="idx">
+                      <img :src="image" :alt="`Image ${idx + 1} for ${selectedItem.MerchName}`" class="w-full h-auto m-auto" />
+                    </template>
+                  </div>
+                  <div class="p-5">
+                    <h2 class="text-2xl font-bold text-text-title" x-text="selectedItem.MerchName"></h2>
+                    <p class="text-text-divider mt-2">₱<span x-text="selectedItem.MerchPrice"></span></p>
+                    <p class="mt-4 text-text-paragraph">More details or description can be added here.</p>
+                    <a target="_blank" href="https://m.me/CafeMystika" class="w-full bg-text-divider mt-10 text-text-paragraph block text-center py-5">Let's Connect!</a>
+                  </div>
+                </div>
+              </template>
             </div>
+          </div>
         </div>
     </div>
 

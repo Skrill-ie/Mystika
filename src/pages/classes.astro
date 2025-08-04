@@ -4,7 +4,15 @@ import BaseLayout from '../layouts/Layout.astro';
 import PinLocation from "../assets/pin.astro";
 import ClassDate from  "../assets/time.astro";
 
-const response = await fetch('https://script.google.com/macros/s/AKfycbzGcHtF3P5VlQDamd3BjEVXSR7a91u_vs-OdYox_-Y_xc4zQC4u15vRM5coSLuosVIO/exec');
+
+const response = await fetch('https://script.google.com/macros/s/AKfycbwwfhftO7HBvF75RLWSacSc4pCMQRfweq1pLumXn1saiuTnaE0x9HYmJP-fLJgoWQTX/exec',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+        action: 'fetchClasses'   })
+});
 const classes = await response.json();
 ---
 
@@ -33,8 +41,6 @@ const classes = await response.json();
                                                         iso: '${cls.Date}',
                                                         get localTime() {
                                                           const date = new Date(this.iso);
-                                                          console.log('🧪 iso:', this.iso, '→ date:', date);
-                                                          if (isNaN(date)) return 'Invalid or missing date';
                                                           return new Intl.DateTimeFormat('en-US', {
                                                             year: 'numeric',
                                                             month: 'long',
@@ -50,8 +56,8 @@ const classes = await response.json();
                                                 </div>
                                             </div>
                                             <div class="my-auto">
-                                                <span class={`block rounded-full px-2 py-2.5 text-xs w-20 text-center uppercase shadow-green-700/30 shadow-lg
-                                                            ${cls.Status === 'Open' ? ' bg-linear-to-br from-lime-500 to-green-700 text-black' : 'bg-gray-500 text-text-paragraph'}`}>
+                                                <span class={`block rounded-full px-2 py-2.5 text-xs w-20 text-center uppercase 
+                                                            ${cls.Status === 'Open' ? ' bg-linear-to-br from-lime-500 to-green-700 text-black shadow-green-700/30 shadow-lg' : 'bg-gray-500 text-text-paragraph'}`}>
                                                     {cls.Status}
                                                 </span>
                                             </div>
@@ -68,13 +74,17 @@ const classes = await response.json();
                                     </div>
 
                                     <p class="my-5 opacity-65">{cls.Description}</p>
-
-                                        <div
-                                                class="bg-button-active w-full text-center px-5 py-2.5 rounded cursor-pointer"
-                                                @click={`selectedClass = { id: '${cls.ID}', name: '${cls.Name}', image:'${cls["Header Image"]}' }; showForm = true`}
-                                        >
-                                            Enroll Now
+                                    <button
+                                            class={`bg-button-active w-full text-center px-5 py-2.5 rounded cursor-pointer
+                                            ${cls.Status === 'Open' ? ' bg-text-divider text-text-paragraph' : 'bg-gray-500 text-text-paragraph opacity-50'}`}
+                                            @click={`selectedClass = { id: '${cls.ID}', name: '${cls.Name}', image:'${cls["Header Image"]}' }; showForm = true`}
+                                            disabled={cls.Status !== 'Open'}
+                                    >
+                                        <div key={cls.ID} x-data={`{ status: ${JSON.stringify(cls.Status)} }`}>
+                                            <span x-show="status === 'Open'">Enroll Now</span>
+                                            <span x-show="status !== 'Open'" x-text="status"></span>
                                         </div>
+                                    </button>
                                 </div>
                             </div>
                         </li>
@@ -97,7 +107,7 @@ const classes = await response.json();
                         <span class="text-sm">Enrolling in:</span><br> <span class="text-2xl font-bold text-text-divider" x-text="selectedClass.name"></span>
                     </h2>
                 </div>
-                <div class="bg-black px-10 py-20 shadow max-w-lg w-full">
+                <div class="bg-black px-10 py-20 shadow max-w-lg w-full h-screen overflow-x-hidden">
                     <div class="mb-10">
                         <h2 class="text-xl font-semibold text-text-divider mb-2">Let’s Get You Enrolled in <br><span class="text-3xl" x-text="selectedClass.name"></span></h2>
                         <p class="text-sm text-text-paragraph my-5 opacity-50">We just need a few details to save your spot.</p>
@@ -111,6 +121,7 @@ const classes = await response.json();
                                 studentReceipt:'',
                                 classId: selectedClass.id,
                                 className: selectedClass.name,
+                                step: 1,
 
                                 isLoading: false,
                                 submitForm() {
@@ -123,20 +134,27 @@ const classes = await response.json();
                                     receipt: this.studentReceipt,
                                     classId: selectedClass.id,
                                     className: selectedClass.name,
+                                    action: 'enrollStudent'
                                   };
 
-                                  fetch('https://script.google.com/macros/s/AKfycbzGcHtF3P5VlQDamd3BjEVXSR7a91u_vs-OdYox_-Y_xc4zQC4u15vRM5coSLuosVIO/exec', {
+                                  fetch('https://script.google.com/macros/s/AKfycbwwfhftO7HBvF75RLWSacSc4pCMQRfweq1pLumXn1saiuTnaE0x9HYmJP-fLJgoWQTX/exec', {
                                     method: 'POST',
                                     headers: {
-                                      'Content-Type': 'text/plain;charset=utf-8'
+                                      'Content-Type': 'application/x-www-form-urlencoded'
                                     },
-                                    body: JSON.stringify(payload)
+                                    body: new URLSearchParams(payload)
                                   })
                                   .then(res => res.json())
                                   .then(data => {
                                     console.log('✅ Submitted to Google Sheets', data);
                                     alert('Successfully enrolled!');
                                     this.studentName = '';
+                                    this.studentEmail = '';
+                                    this.studentNumber = '';
+                                    this.studentReceipt = '';
+                                    this.classId = '';
+                                    this.className = '';
+                                    this.step = 1;
                                     showForm = false;
                                   })
                                   .catch(err => {
@@ -153,50 +171,80 @@ const classes = await response.json();
                         <input type="hidden" name="class_id" x-model="classId" />
                         <input type="hidden" name="class_name" x-model="className" />
 
-                        <!-- Your visible form fields -->
-                        <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50">Your Name</label>
-                        <input
-                                class="bg-black-primary border text-text-paragraph/50 text-sm rounded-md focus:ring-text-divider focus:ring-text-divider block w-full px-10 p-2.5"
-                                type="text"
-                                name="student_name"
-                                x-model="studentName"
-                                placeholder="Your Name"
-                                required
-                        />
-                        <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50 mt-5">Your Email</label>
-                        <input
-                                class="bg-black-primary border text-text-paragraph/50 text-sm rounded-md focus:ring-text-divider focus:ring-text-divider block w-full px-10 p-2.5"
-                                type="email"
-                                name="student_email"
-                                x-model="studentEmail"
-                                placeholder="Your Email"
-                                required
-                        />
-                        <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50 mt-5">Your Mobile</label>
-                        <input class="bg-black-primary border text-text-paragraph/50 text-sm rounded-md focus:ring-text-divider focus:ring-text-divider block w-full px-10 p-2.5"
-                                type="tel"
-                                name="student_number"
-                                x-model="studentNumber"
-                                placeholder="Your Mobile"
-                                pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
-                                required
-                        />
+                        <div class="relative ">
+                            <div x-show="step === 1"
+                                 x-transition:enter="transition ease-out duration-500"
+                                 x-transition:enter-start="opacity-0 -translate-x-full"
+                                 x-transition:enter-end="opacity-100 translate-x-0"
+                                 x-transition:leave="transition ease-in duration-300"
+                                 x-transition:leave-start="opacity-100 translate-x-0"
+                                 x-transition:leave-end="opacity-0 -translate-x-full"
+                                 class="absolute top-0 left-0 w-full">
 
-                        <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50 mt-5">Your Reference Number</label>
-                        <input class="bg-black-primary border text-text-paragraph/50 text-sm rounded-md focus:ring-text-divider focus:ring-text-divider block w-full px-10 p-2.5"
-                               type="text"
-                               name="student_receipt"
-                               x-model="studentReceipt"
-                               placeholder="Reference Number"
-                               required
-                        />
+                                <div class="items-center flex flex-col">
+                                    <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50 mt-5 text-center">Pay Gcash Via QR</label>
+                                    <img class="max-w-50" src="/images/gcash.png"/>
+                                </div>
+                                <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50 mt-5">Gcash Reference Number</label>
+                                <input class="bg-black-primary border text-text-paragraph/50 text-sm rounded-md focus:ring-text-divider focus:ring-text-divider block w-full px-10 p-2.5"
+                                       type="text"
+                                       name="student_receipt"
+                                       x-model="studentReceipt"
+                                       placeholder="Reference Number"
+                                       required
+                                />
+                                <button type="button" @click="step = 2" class="border-1 border-button-active px-4 py-2 rounded w-full mt-2 mb-20">
+                                    <span class="text-text-paragraph opacity-50">Proceed to Student Info</span>
+                                </button>
 
-                        <div class="flex flex-col mt-10">
-                            <button type="submit" :disabled="isLoading" class="text-text-paragraph bg-button-active w-full text-center px-5 py-1.5 rounded cursor-pointer">
-                                <span x-show="!isLoading">Submit</span>
-                                <span x-show="isLoading">Submitting...</span>
-                            </button>
-                            <button type="button" @click="showForm = false" class="text-text-paragraph px-5 py-1.5 cursor-pointer mt-5 text-sm opacity-50">Change My Mind</button>
+                            </div>
+                            <div x-show="step === 2"
+                                 x-transition:enter="transition ease-out duration-500"
+                                 x-transition:enter-start="opacity-0 translate-x-full"
+                                 x-transition:enter-end="opacity-100 translate-x-0"
+                                 x-transition:leave="transition ease-in duration-300"
+                                 x-transition:leave-start="opacity-100 translate-x-0"
+                                 x-transition:leave-end="opacity-0 translate-x-full"
+                                 class="absolute top-0 left-0 w-full space-y-4">
+                                <!-- Your visible form fields -->
+                                <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50">Your Name</label>
+                                <input
+                                        class="bg-black-primary border text-text-paragraph/50 text-sm rounded-md focus:ring-text-divider focus:ring-text-divider block w-full px-10 p-2.5"
+                                        type="text"
+                                        name="student_name"
+                                        x-model="studentName"
+                                        placeholder="Your Name"
+                                        required
+                                />
+                                <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50 mt-5">Your Email</label>
+                                <input
+                                        class="bg-black-primary border text-text-paragraph/50 text-sm rounded-md focus:ring-text-divider focus:ring-text-divider block w-full px-10 p-2.5"
+                                        type="email"
+                                        name="student_email"
+                                        x-model="studentEmail"
+                                        placeholder="Your Email"
+                                        required
+                                />
+                                <label class="block mb-2 text-sm font-medium text-text-paragraph opacity-50 mt-5">Your Mobile</label>
+                                <input class="bg-black-primary border text-text-paragraph/50 text-sm rounded-md focus:ring-text-divider focus:ring-text-divider block w-full px-10 p-2.5"
+                                        type="text"
+                                        name="student_number"
+                                        x-model="studentNumber"
+                                        placeholder="Your Mobile"
+                                        required
+                                />
+
+                                <div class="flex flex-col mt-10">
+                                    <button type="submit" :disabled="isLoading" class="text-text-paragraph bg-button-active w-full text-center px-5 py-1.5 rounded cursor-pointer">
+                                        <span x-show="!isLoading">Submit</span>
+                                        <span x-show="isLoading">Submitting...</span>
+                                    </button>
+                                    <button type="button" @click="step = 1" class="border-1 border-button-active text-white px-4 py-2 rounded w-full my-2">
+                                       <span class="text-text-paragraph opacity-50">Go back</span>
+                                    </button>
+                                    <button type="button" @click="showForm = false" class="text-text-paragraph px-5 py-1.5 cursor-pointer mt-5 text-sm opacity-50 mb-20">Change My Mind</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

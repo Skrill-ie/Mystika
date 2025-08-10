@@ -62,11 +62,11 @@ const coffeePackages = [
   {
     title: 'Moka Package',
     description: `<ul class="list-disc pl-5 text-left">
-                    <li><b>Bold & Smooth</b> – Brewed to impress, every cup delivers rich flavor.</li>
-                    <li><b>Artisan Energy</b> – Classic Moka Pot magic with a modern edge.</li>
-                    <li><b>Elevate Every Gathering</b> – Simple to brew, unforgettable to serve.</li>
-                    <li><b>Pure or Creative</b> – Enjoy it black or with your signature twist.</li>
-                    <li><b>Warmth in Every Pour</b> – Comfort, charm, and caffeine in one package.</li>
+                    <li><b>Bold & Smooth</b> – <span class="opacity-60">Brewed to impress, every cup delivers rich flavor.</span></li>
+                    <li><b>Artisan Energy</b> – <span class="opacity-60">Classic Moka Pot magic with a modern edge.</span></li>
+                    <li><b>Elevate Every Gathering</b> – <span class="opacity-60">Simple to brew, unforgettable to serve.</span></li>
+                    <li><b>Pure or Creative</b> – <span class="opacity-60">Enjoy it black or with your signature twist.</span></li>
+                    <li><b>Warmth in Every Pour</b> – <span class="opacity-60">Comfort, charm, and caffeine in one package.</span></li>
                 </ul>`,
     subdescription:`<div class="text-center mb-5"><div class="font-bold text-2xl py-2.5">Bold, smooth, and brewed to impress</div> <div>"Our Moka Pot Package delivers coffee with character."</div></div>`,
     fulldescription: `<span class="opacity-60">This method showcases the rich depth of flavor in every cup, offering your guests a simple yet elevated caffeine experience. Whether served pure and black or with a creative twist, each brew brings warmth, energy, and artisanal charm to any gathering.</span>`,
@@ -76,11 +76,11 @@ const coffeePackages = [
   {
     title: 'Espresso Package',
     description: `<ul class="list-disc pl-5 text-left">
-                    <li><b>Café-Quality at Home</b> – Brewed to perfection, every single pour.</li>
-                    <li><b>Bold to Creamy</b> – Enjoy rich shots or silky-smooth lattes.</li>
-                    <li><b>Precision & Balance</b> – Smooth, bold, and never bitter.</li>
-                    <li><b>Loved by Guests</b> – Impress coffee lovers with every cup.</li>
-                    <li><b>Craft in Every Cup</b> – Perfect for enthusiasts and casual sippers alike.</li>
+                    <li><b>Café-Quality at Home</b> – <span class="opacity-60">Brewed to perfection, every single pour.</span></li>
+                    <li><b>Bold to Creamy</b> – <span class="opacity-60">Enjoy rich shots or silky-smooth lattes.</span></li>
+                    <li><b>Precision & Balance</b> – <span class="opacity-60">Smooth, bold, and never bitter.</span></li>
+                    <li><b>Loved by Guests</b> – <span class="opacity-60">Impress coffee lovers with every cup.</span></li>
+                    <li><b>Craft in Every Cup</b> – <span class="opacity-60">Perfect for enthusiasts and casual sippers alike.</span></li>
                 </ul>`,
     subdescription:`<div class="text-center mb-5"><div class="font-bold text-2xl py-2.5">Brewed to perfection</div> <div>"Our Espresso Package delivers café-quality coffee with every pour."</div></div>`,
     fulldescription: `<span>From bold shots to creamy lattes, our espresso machine guarantees a smooth, rich, and balanced experience your guests will love. Ideal for coffee enthusiasts and anyone who appreciates craft in every cup.</span>`,
@@ -174,24 +174,24 @@ const coffeePackages = [
       </div>
     </div>
   </section>
-  <section id="machine-services" class="flex w-full text-paragraph mb-10 gap-10">
-      <div class="w-1/2"><img class="h-110 w-full object-cover" src='/images/services/maintenance.jpg'/></div>
-      <div class="max-w-lg text-text-paragraph mx-auto">
-          <h1 class="text-3xl text-text-title my-10 w-full mx-auto font-bold">Machine Services Services</h1>
+  <section id="machine-services" class="flex flex-col md:flex-row w-full text-paragraph mb-10 gap-10">
+      <div class="md:w-1/2"><img class="h-110 w-full object-cover" src='/images/services/maintenance.jpg'/></div>
+      <div class="max-w-lg text-text-paragraph mx-auto px-3 md:py-0">
+          <h1 class="text-3xl text-text-title my-10 w-full mx-auto font-bold">Machine Services</h1>
           <p class="mb-10 opacity-60">Keep your coffee flowing at its best with Café Mystika’s professional coffee machine maintenance. We provide thorough cleaning, calibration, and preventative care to ensure your equipment delivers consistent flavor and peak performance. Whether for cafés, restaurants, or home baristas, our expert service helps extend your machine’s lifespan, reduce downtime, and keep every cup tasting exactly as perfect.</p>
           <a href={ angeloMessenger }
              target="_blank"
              class="bg-black-primary text-text-divider w-full text-center px-5 py-2.5 rounded cursor-pointer"> Make an Appointment Now! </a>
       </div>
   </section>
-    <section id="business-consultation" class="flex w-full text-paragraph gap-10">
-        <div class="max-w-lg text-text-paragraph mx-auto">
+    <section id="business-consultation" class="flex flex-col md:flex-row w-full text-paragraph gap-10 mb-10 md:mb-0">
+        <div class="max-w-lg text-text-paragraph mx-auto px-3 md:py-0 order-2">
             <h1 class="text-3xl text-text-title my-10 w-full mx-auto font-bold">Business Consultancy</h1>
             <p class="mb-10 opacity-60">Turn your coffee passion into a thriving business with Café Mystika’s expert consultation services. From concept development and menu creation to workflow optimization and cost management, we guide aspiring entrepreneurs and established cafés toward sustainable success. With industry insights and hands-on expertise, we help you craft a brand that stands out, delights customers, and grows with confidence.</p>
             <a href={ angeloMessenger }
                target="_blank"
                class="bg-black-primary text-text-divider w-full text-center px-5 py-2.5 rounded cursor-pointer"> Begin your Consultation! </a>
         </div>
-        <div class="w-1/2"><img class="h-110 w-full object-cover" src='/images/services/consultation.jpg'/></div>
+        <div class="md:w-1/2 order-1"><img class="h-110 w-full object-cover" src='/images/services/consultation.jpg'/></div>
     </section>
 </BaseLayout>

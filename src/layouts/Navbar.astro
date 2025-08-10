@@ -84,9 +84,23 @@ const currentPath = Astro.url.pathname;
         <div>
             <img src="/images/Group-45.png"/>
         </div>
-        <div class="p-6">
+        <div class="p-6 opacity-60" x-data="{ servicesOpen: false }">
             <a href="/" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/' ? 'text-button-active' : ''}`}>Home</a>
-            <a href="/services" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/services/' ? 'text-button-active' : ''}`}>Services</a>
+            <button @click="servicesOpen = !servicesOpen" class="cursor-pointer select-none flex items-center transition duration-200">
+                <span class="pr-2">Services</span>
+                <svg :class="{'rotate-180': servicesOpen}" class="w-5 h-5 transform transition-transform duration-300" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div
+                    x-show="servicesOpen"
+                    x-collapse x-cloak
+                    class="pl-4 text-sm"
+            >
+                <a href="/services#mobile-bar" class={`block px-3 py-2 hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/services#mobile-bar')  ? 'text-button-active' : ''}`}>Mobile Bar</a>
+                <a href="/services#machine-services" class={`block px-3 py-2 hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/services#machine-services') ? 'text-button-active' : ''}`}>Machine Maintenance</a>
+                <a href="/services#business-consultation" class={`block px-3 py-2 hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/services#business-consultation') ? 'text-button-active' : ''}`}>Business Consultation</a>
+            </div>
             <a href="/classes" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/classes/' ? 'text-button-active' : ''}`}>Classes</a>
             <a href="/blog" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/blog') ? 'text-button-active' : ''}`}>Blog</a>
             <a href="/about" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/about/' ? 'text-button-active' : ''}`}>About</a>

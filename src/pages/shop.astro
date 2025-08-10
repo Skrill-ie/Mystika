@@ -53,15 +53,19 @@ const merch = await response.json();
           <template x-if="selectedItem">
             <div class="bg-black-primary">
               <div
-                class="grid mb-4 bg-black-secondary"
-                :class="selectedItem.MerchImages.length === 1
+                  class="grid mb-4 bg-black-secondary"
+                  :class="selectedItem.MerchImages.split(',').length === 1
                   ? 'grid-cols-1'
-                  : selectedItem.MerchImages.length === 2
+                  : selectedItem.MerchImages.split(',').length === 2
                   ? 'grid-cols-2'
                   : 'grid-cols-3'"
               >
-                <template x-for="(image, idx) in selectedItem.MerchImages" :key="idx">
-                  <img :src="image" :alt="`Image ${idx + 1} for ${selectedItem.MerchName}`" class="w-full h-auto m-auto" />
+                <template x-for="(image, idx) in selectedItem.MerchImages.split(',')" :key="idx">
+                  <img
+                      :src="image.trim()"
+                      :alt="`Image ${idx + 1} for ${selectedItem.MerchName}`"
+                      class="w-full h-auto m-auto"
+                  />
                 </template>
               </div>
               <div class="p-5">

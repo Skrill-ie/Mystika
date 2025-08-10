@@ -6,46 +6,53 @@ import FruityAndFloralImg from '/public/images/services/fruity-and-floral.jpg';
 import ExlusiveImg from '/public/images/services/exclusive.jpg';
 import MokaImg from '/public/images/services/moka.jpg';
 import EspressoImg from '/public/images/services/espresso.jpg';
+import ConsultationImg from '/public/images/services/consultation.jpg';
+import MaintenanceImg from '/public/images/services/maintenance.jpg';
 
+const socialFacebook = "https://www.facebook.com/CafeMystika";
+const angeloMessenger = "https://web.facebook.com/messages/e2ee/t/8567561126643238"
 const cocktailPackages = [
   {
     title: 'OG Series',
     subtitle: '(Uses pouring brands)',
     description: `<ul class="list-disc pl-5 text-left">
-                      <li><b>The OG Series</b> – A tribute to timeless flavors & iconic moments.</li>
-                      <li><b>Signature & Classic</b> – Handpicked favorites from behind the bar.</li>
-                      <li><b>Every Sip, a Story</b> – Crafted with history, heart, and bold character.</li>
-                      <li><b>Revisit or Discover</b> – Rediscover your go-to or meet your next favorite.</li>
-                      <li><b>Crafted with Passion</b> – Where mixology meets legacy.</li>
+                      <li><b>The OG Series</b> –<span class="opacity-60"> A tribute to timeless flavors & iconic moments.</span></li>
+                      <li><b>Signature & Classic</b> –<span class="opacity-60"> Handpicked favorites from behind the bar.</span></li>
+                      <li><b>Every Sip, a Story</b> –<span class="opacity-60"> Crafted with history, heart, and bold character.</span></li>
+                      <li><b>Revisit or Discover</b> –<span class="opacity-60"> Rediscover your go-to or meet your next favorite.</span></li>
+                      <li><b>Crafted with Passion</b> –<span class="opacity-60"> Where mixology meets legacy.</span></li>
                   </ul>`,
-    fulldescription: `<b>Discover the OG Series — a tribute to timeless flavors and unforgettable moments.</b> Handpicked from our most loved classics and signature creations, each cocktail tells the story of our journey behind the bar. Whether you're revisiting a favorite or finding a new go-to, every sip captures the essence of our craft, our history, and our passion for the art of mixology.`,
+    subdescription:`<div class="text-center mb-5"><div class="font-bold text-2xl py-2.5">Discover the OG Series </div><div>"A tribute to timeless flavors and unforgettable moments."</div></div>`,
+    fulldescription: `<span class="opacity-60">Handpicked from our most loved classics and signature creations, each cocktail tells the story of our journey behind the bar. Whether you're revisiting a favorite or finding a new go-to, every sip captures the essence of our craft, our history, and our passion for the art of mixology.</span>`,
     price: 'Starts @<br><span class="text-4xl">₱10,500</span>/<span class="text-sm">100 PAX</span>',
     image: OGSeriesImg
   },
   {
     title: 'Fruity and Floral',
     description: `<ul class="list-disc pl-5 text-left">
-                    <li><b>Fruity & Floral Package</b> – Where fresh meets finesse.</li>
-                    <li><b>Juicy Meets Elegant</b> – Ripe fruits + delicate floral infusions.</li>
-                    <li><b>Handcrafted Creations</b> – Signature cocktails & bespoke blends.</li>
-                    <li><b>Aromatic & Refreshing</b> – Bursting with flavor, fragrance & charm.</li>
-                    <li><b>Nature-Inspired Sophistication</b> – Bright, tropical, or soft & fragrant.</li>
-                    <li><b>Elevate Every Sip</b> – A sensory journey in every glass.</li>
+                    <li><b>Fruity & Floral Package</b> –<span class="opacity-60"> Where fresh meets finesse.</li>
+                    <li><b>Juicy Meets Elegant</b> –<span class="opacity-60"> Ripe fruits + delicate floral infusions.</li>
+                    <li><b>Handcrafted Creations</b> –<span class="opacity-60"> Signature cocktails & bespoke blends.</li>
+                    <li><b>Aromatic & Refreshing</b> –<span class="opacity-60"> Bursting with flavor, fragrance & charm.</li>
+                    <li><b>Nature-Inspired Sophistication</b> –<span class="opacity-60"> Bright, tropical, or soft & fragrant.</li>
+                    <li><b>Elevate Every Sip</b> –<span class="opacity-60"> A sensory journey in every glass.</li>
                   </ul>`,
-    fulldescription: `<b>Experience the Fruity & Floral Package – where fresh meets finesse.</b> This handcrafted cocktail collection celebrates the vibrant fusion of ripe fruits and delicate floral infusions. From signature creations to bespoke masterpieces, each drink is a refreshing sensory journey—bursting with juicy flavors, aromatic syrups, and elegant floral notes. Whether you're craving something bright and tropical or soft and fragrant, this package brings a touch of sophistication and nature-inspired charm to every sip.`,
+    subdescription:`<div class="text-center mb-5"><div class="font-bold text-2xl py-2.5">Experience the Fruity & Floral Package</div><div>"Where fresh meets finesse."</div></div> `,
+    fulldescription: `<span class="opacity-60">This handcrafted cocktail collection celebrates the vibrant fusion of ripe fruits and delicate floral infusions. From signature creations to bespoke masterpieces, each drink is a refreshing sensory journey—bursting with juicy flavors, aromatic syrups, and elegant floral notes. Whether you're craving something bright and tropical or soft and fragrant, this package brings a touch of sophistication and nature-inspired charm to every sip.</span>`,
     price: 'Starts @<br><span class="text-4xl">₱12,000</span>/<span class="text-sm">100 PAX</span>',
     image : FruityAndFloralImg
   },
   {
     title: 'Exclusive',
     description: `<ul class="list-disc pl-5 text-left">
-                    <li><b>The Exclusive Package</b> – Refined spirits, timeless sophistication.</li>
-                    <li><b>Rich & Earthy</b> – Top-shelf whiskeys, rums, and brandies.</li>
-                    <li><b>Crafted for the Discerning</b> – Bold flavor meets elegant execution.</li>
-                    <li><b>Classics Reimagined</b> – Masterfully balanced & deeply complex.</li>
-                    <li><b>Authentic Luxury</b> – A curated experience in every sip.</li>
+                    <li><b>The Exclusive Package</b> –<span class="opacity-60"> Refined spirits, timeless sophistication.</span></li>
+                    <li><b>Rich & Earthy</b> –<span class="opacity-60"> Top-shelf whiskeys, rums, and brandies.</span></li>
+                    <li><b>Crafted for the Discerning</b> –<span class="opacity-60"> Bold flavor meets elegant execution.</span></li>
+                    <li><b>Classics Reimagined</b> –<span class="opacity-60"> Masterfully balanced & deeply complex.</span></li>
+                    <li><b>Authentic Luxury</b> –<span class="opacity-60"> A curated experience in every sip.</span></li>
                   </ul>`,
-    fulldescription: `<b>Elevate your taste with the Exclusive Package – a celebration of refined spirits and timeless sophistication.</b> Crafted for those who appreciate depth, character, and quality, this collection showcases top-shelf whiskeys, rums, and brandies with rich, earthy notes and smooth, crisp finishes. Each cocktail is a masterclass in balance and complexity—whether it’s a reimagined classic or a bespoke creation tailored to your palate. Designed for the discerning, this package delivers bold flavor, elegance, and authenticity in every sip.`,
+    subdescription:`<div class="text-center mb-5"><div class="font-bold text-2xl py-2.5">Elevate your taste with the Exclusive Package</div><div>"A celebration of refined spirits and timeless sophistication."</div></div>`,
+    fulldescription: `<span class="opacity-60">Crafted for those who appreciate depth, character, and quality, this collection showcases top-shelf whiskeys, rums, and brandies with rich, earthy notes and smooth, crisp finishes. Each cocktail is a masterclass in balance and complexity—whether it’s a reimagined classic or a bespoke creation tailored to your palate. Designed for the discerning, this package delivers bold flavor, elegance, and authenticity in every sip.</span>`,
     price: 'Starts @<br><span class="text-4xl">₱18,500</span>/<span class="text-sm">50 PAX</span>',
     image: ExlusiveImg
   },
@@ -61,7 +68,8 @@ const coffeePackages = [
                     <li><b>Pure or Creative</b> – Enjoy it black or with your signature twist.</li>
                     <li><b>Warmth in Every Pour</b> – Comfort, charm, and caffeine in one package.</li>
                 </ul>`,
-    fulldescription: `<b>Bold, smooth, and brewed to impress — our Moka Pot Package delivers coffee with character.</b> This method showcases the rich depth of flavor in every cup, offering your guests a simple yet elevated caffeine experience. Whether served pure and black or with a creative twist, each brew brings warmth, energy, and artisanal charm to any gathering.`,
+    subdescription:`<div class="text-center mb-5"><div class="font-bold text-2xl py-2.5">Bold, smooth, and brewed to impress</div> <div>"Our Moka Pot Package delivers coffee with character."</div></div>`,
+    fulldescription: `<span class="opacity-60">This method showcases the rich depth of flavor in every cup, offering your guests a simple yet elevated caffeine experience. Whether served pure and black or with a creative twist, each brew brings warmth, energy, and artisanal charm to any gathering.</span>`,
     price: 'Starts @<br><span class="text-4xl">₱9,500</span>',
     image: MokaImg
   },
@@ -74,7 +82,8 @@ const coffeePackages = [
                     <li><b>Loved by Guests</b> – Impress coffee lovers with every cup.</li>
                     <li><b>Craft in Every Cup</b> – Perfect for enthusiasts and casual sippers alike.</li>
                 </ul>`,
-    fulldescription: `<b>Brewed to perfection — our Espresso Package delivers café-quality coffee with every pour.</b> From bold shots to creamy lattes, our espresso machine guarantees a smooth, rich, and balanced experience your guests will love. Ideal for coffee enthusiasts and anyone who appreciates craft in every cup.`,
+    subdescription:`<div class="text-center mb-5"><div class="font-bold text-2xl py-2.5">Brewed to perfection</div> <div>"Our Espresso Package delivers café-quality coffee with every pour."</div></div>`,
+    fulldescription: `<span>From bold shots to creamy lattes, our espresso machine guarantees a smooth, rich, and balanced experience your guests will love. Ideal for coffee enthusiasts and anyone who appreciates craft in every cup.</span>`,
     price: 'Starts @<br><span class="text-4xl">₱11,500</span>',
     image: EspressoImg
   },
@@ -82,9 +91,10 @@ const coffeePackages = [
 ---
 <BaseLayout title="Services">
   <HeroSection/>
-  <section class="flex flex-col items-center px-3 text-center">
+  <section class="flex flex-col items-center px-3 text-center" id="mobile-bar">
+      <h1 class="text-3xl text-text-title my-20 w-full mx-auto font-bold">Mobile Bar Packages</h1>
+      <p class="max-w-lg text-text-paragraph opacity-60">At Café Mystika, we bring the perfect blend of craft coffee and cocktails to your gatherings, offering curated packages to suit every occasion. From bold moka brews and velvety espresso shots to refreshing fruity creations and sophisticated signature cocktails, every pour is made to delight, spark connections, and elevate your celebration.</p>
     <div x-data="{ openIndex: null, hovered: null }">
-        
         <!-- Cocktail Packages -->
         <h2 class="text-3xl text-text-title my-20 w-full mx-auto font-bold">Cocktail Packages</h2>
         <div 
@@ -98,50 +108,33 @@ const coffeePackages = [
             @mouseenter={`if (openIndex === null) hovered = ${idx}`}
             @mouseleave={`if (openIndex === null || openIndex === ${idx}) hovered = null`}
             :class={`(openIndex === ${idx} || (openIndex === null && hovered === ${idx})) ? "bg-button-active border-[#242424] -translate-y-2" : "bg-black-secondary text-text-paragraph border-button-active"`}
-            class="group relative rounded-tl-2xl rounded-br-2xl shadow p-6 flex flex-col items-center border-3 fade-in-up transition-all duration-300 hover:transition-transform bg-black-secondary text-[#242424] border-button-active"
+            class="group relative rounded-br-2xl shadow  flex flex-col items-center border-3 fade-in-up transition-all duration-300 hover:transition-transform bg-black-secondary text-[#242424] border-button-active"
             style={`animation-delay: ${idx * 120}ms`}
           >
-            <h3 class="text-xl font-bold mb-2 text-center">
-              {pkg.title}
-              {pkg.subtitle && <br />}
-              {pkg.subtitle && (
-                <span class="text-base font-normal">{pkg.subtitle}</span>
-              )}
-            </h3>
-            <div
-              set:html={pkg.price}
-              :class={`(openIndex === ${idx} || (openIndex === null && hovered === ${idx})) ? 'text-[#242424]' : 'text-amber-500'`}
-              class="font-semibold mb-2 text-center text-2xl duration-300"
-            ></div>
-            <div class="mb-7 text-left" set:html={pkg.description}></div>
-            <button
-              class="absolute px-3 py-1.5 bg-button-active text-[#242424] font-semibold rounded-tl-lg rounded-br-lg hover:bg-[#242424] hover:text-button-active transition-colors duration-300 flex items-center gap-2"
-              style="box-shadow: -4px -4px 12px 0 rgba(0,0,0,0.25); bottom: calc(var(--spacing) * -0.6); right: calc(var(--spacing) * -0.5);"
-              type="button"
-              @click={`openIndex === ${idx} ? openIndex = null : openIndex = ${idx}; hovered = null`}
-            >
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-300" :class="openIndex === ${idx} ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div
-              x-show={`openIndex === ${idx}`}
-              x-transition:enter="transition-all duration-500"
-              x-transition:enter-start="opacity-0 max-h-0"
-              x-transition:enter-end="opacity-100 max-h-[600px]"
-              x-transition:leave="transition-all duration-300"
-              x-transition:leave-start="opacity-100 max-h-[600px]"
-              x-transition:leave-end="opacity-0 max-h-0"
-              class="w-full overflow-hidden flex flex-col items-center mt-6"
-              style="will-change: max-height;"
-            >
-              <img src={pkg.image.src ?? pkg.image} alt="" class="w-full max-w-xs rounded-xl mb-4" />
-              <div class="text-left mb-7" set:html={pkg.fulldescription}></div>
-            </div>
+              <div class="mb-10 w-full">
+                  <img src={pkg.image.src ?? pkg.image} alt="" class="h-60  w-full mb-4 object-cover" />
+              </div>
+              <div class="m-6 h-full relative">
+                  <h3 class="text-xl font-bold mb-2 text-center">
+                      {pkg.title}
+                      {pkg.subtitle && <br />}
+                      {pkg.subtitle && (
+                        <span class="text-base font-normal">{pkg.subtitle}</span>
+                      )}
+                  </h3>
+                  <div
+                          set:html={pkg.price}
+                          :class={`(openIndex === ${idx} || (openIndex === null && hovered === ${idx})) ? 'text-[#242424]' : 'text-amber-500'`}
+                          class="font-semibold mb-2 text-center text-2xl duration-300 mb-10">
+                  </div>
+                  <div class="text-left mb-7" set:html={pkg.subdescription}></div>
+                  <div class="text-left mb-20" set:html={pkg.description}></div>
+                  <a href={ socialFacebook }
+                     target="_blank"
+                     class="bg-black-primary text-text-divider w-full text-center px-5 py-2.5 rounded cursor-pointer absolute inset-x-0 bottom-0"> Book Now! </a>
+              </div>
           </div>
-        ))}
-      </div>
+        ))}</div>
 
       <!-- Coffee Packages -->
       <h2 class="text-3xl text-text-title my-20 w-full mx-auto font-bold">Coffee Packages</h2>
@@ -157,44 +150,48 @@ const coffeePackages = [
             @mouseenter={`if (openIndex === null) hovered = ${idx + 100}`}
             @mouseleave={`if (openIndex === null || openIndex === ${idx + 100}) hovered = null`}
             :class={`(openIndex === ${idx + 100} || (openIndex === null && hovered === ${idx + 100})) ? "bg-button-active border-[#242424] -translate-y-2" : "bg-black-secondary text-text-paragraph border-button-active"`}
-            class="group relative rounded-tl-2xl rounded-br-2xl shadow p-6 flex flex-col items-center border-3 fade-in-up transition-all duration-300 hover:transition-transform bg-black-secondary text-[#242424] border-button-active"
+            class="group relative rounded-br-2xl shadow flex flex-col items-center border-3 fade-in-up transition-all duration-300 hover:transition-transform bg-black-secondary text-[#242424] border-button-active"
             style={`animation-delay: ${idx * 120}ms`}
           >
-            <h3 class="text-xl font-bold mb-2 text-center">{pkg.title}</h3>
-            <div 
-              set:html={pkg.price}
-              :class={`(openIndex === ${idx + 100} || (openIndex === null && hovered === ${idx + 100})) ? 'text-[#242424]' : 'text-amber-500'`}
-              class="font-semibold mb-2 text-center text-2xl duration-300"
-            ></div>
-            <div class="mb-7 text-left" set:html={pkg.description}></div>
-            <button
-              class="absolute px-3 py-1.5 bg-button-active text-[#242424] font-semibold rounded-tl-lg rounded-br-lg hover:bg-[#242424] hover:text-button-active transition-colors duration-300 flex items-center gap-2"
-              style="box-shadow: -4px -4px 12px 0 rgba(0,0,0,0.25); bottom: calc(var(--spacing) * -0.6); right: calc(var(--spacing) * -0.5);"
-              type="button"
-              @click={`openIndex === ${idx + 100} ? openIndex = null : openIndex = ${idx + 100}; hovered = null`}
-            >
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-300" :class={`openIndex === ${idx + 100} ? 'rotate-180' : ''`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div
-              x-show={`openIndex === ${idx + 100}`}
-              x-transition:enter="transition-all duration-500"
-              x-transition:enter-start="opacity-0 max-h-0"
-              x-transition:enter-end="opacity-100 max-h-[600px]"
-              x-transition:leave="transition-all duration-300"
-              x-transition:leave-start="opacity-100 max-h-[600px]"
-              x-transition:leave-end="opacity-0 max-h-0"
-              class="w-full overflow-hidden flex flex-col items-center mt-6"
-              style="will-change: max-height;"
-            >
-              <img src={pkg.image.src ?? pkg.image} alt="" class="w-full max-w-xs rounded-xl mb-4" />
-              <div class="text-left mb-7" set:html={pkg.fulldescription}></div>
-            </div>
+              <div class="mb-10 w-full">
+                <img src={pkg.image.src ?? pkg.image} alt="" class="w-full h-50 mb-4 object-cover" />
+              </div>
+              <div class="m-6 h-full relative">
+                <h3 class="text-xl font-bold mb-2 text-center">{pkg.title}</h3>
+                <div
+                  set:html={pkg.price}
+                  :class={`(openIndex === ${idx + 100} || (openIndex === null && hovered === ${idx + 100})) ? 'text-[#242424]' : 'text-amber-500'`}
+                  class="font-semibold mb-2 text-center text-2xl duration-300"
+                ></div>
+                  <div class="text-left mb-7" set:html={pkg.subdescription}></div>
+                  <div class="text-left mb-20" set:html={pkg.description}></div>
+                  <a href={ socialFacebook }
+                     target="_blank"
+                     class="bg-black-primary text-text-divider w-full text-center px-5 py-2.5 rounded cursor-pointer absolute inset-x-0 bottom-0"> Book Now! </a>
+              </div>
           </div>
         ))}
       </div>
     </div>
   </section>
+  <section id="machine-services" class="flex w-full text-paragraph mb-10 gap-10">
+      <div class="w-1/2"><img class="h-110 w-full object-cover" src='/images/services/maintenance.jpg'/></div>
+      <div class="max-w-lg text-text-paragraph mx-auto">
+          <h1 class="text-3xl text-text-title my-10 w-full mx-auto font-bold">Machine Services Services</h1>
+          <p class="mb-10 opacity-60">Keep your coffee flowing at its best with Café Mystika’s professional coffee machine maintenance. We provide thorough cleaning, calibration, and preventative care to ensure your equipment delivers consistent flavor and peak performance. Whether for cafés, restaurants, or home baristas, our expert service helps extend your machine’s lifespan, reduce downtime, and keep every cup tasting exactly as perfect.</p>
+          <a href={ angeloMessenger }
+             target="_blank"
+             class="bg-black-primary text-text-divider w-full text-center px-5 py-2.5 rounded cursor-pointer"> Make an Appointment Now! </a>
+      </div>
+  </section>
+    <section id="business-consultation" class="flex w-full text-paragraph gap-10">
+        <div class="max-w-lg text-text-paragraph mx-auto">
+            <h1 class="text-3xl text-text-title my-10 w-full mx-auto font-bold">Business Consultancy</h1>
+            <p class="mb-10 opacity-60">Turn your coffee passion into a thriving business with Café Mystika’s expert consultation services. From concept development and menu creation to workflow optimization and cost management, we guide aspiring entrepreneurs and established cafés toward sustainable success. With industry insights and hands-on expertise, we help you craft a brand that stands out, delights customers, and grows with confidence.</p>
+            <a href={ angeloMessenger }
+               target="_blank"
+               class="bg-black-primary text-text-divider w-full text-center px-5 py-2.5 rounded cursor-pointer"> Begin your Consultation! </a>
+        </div>
+        <div class="w-1/2"><img class="h-110 w-full object-cover" src='/images/services/consultation.jpg'/></div>
+    </section>
 </BaseLayout>

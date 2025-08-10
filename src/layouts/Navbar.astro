@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname;
             </div>
         </div>
     </div>
-    <nav class="bg-black-secondary" x-data="{ open: false }">
+    <nav class="bg-black-secondary" x-data="{ open: false, servicesOpen: false }">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div class="flex justify-between h-16 items-center">
             <!-- Logo -->
@@ -29,11 +29,32 @@ const currentPath = Astro.url.pathname;
             <!-- Desktop Links -->
             <div class="hidden md:flex space-x-6 items-center text-text-paragraph">
                 <a href="/" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/' ? 'text-button-active' : ''}`}>Home</a>
-                <a href="/services" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/services/' ? 'text-button-active' : ''}`}>Services</a>
+                <div class="relative" @click.outside="servicesOpen = false">
+                    <button @click="servicesOpen = !servicesOpen" class="cursor-pointer select-none flex items-center transition duration-200">
+                        <span class="pr-2">Services</span>
+                        <svg :class="{'rotate-180': servicesOpen}" class="w-5 h-5 transform transition-transform duration-300" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 8L10 12L14 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown Services -->
+                    <div x-show="servicesOpen"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 -translate-y-2"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         x-transition:leave="transition ease-in duration-200"
+                         x-transition:leave-start="opacity-100 translate-y-0"
+                         x-transition:leave-end="opacity-0 -translate-y-2"
+                         class="bg-black-primary absolute left-0 mt-2 rounded-lg shadow p-2 flex flex-col gap-1 min-w-[250px] z-50">
+                        <a href="/services#mobile-bar" class={`block px-3 py-2 hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/services#mobile-bar')  ? 'text-button-active' : ''}`}>Mobile Bar</a>
+                        <a href="/services#machine-services" class={`block px-3 py-2 hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/services#machine-services') ? 'text-button-active' : ''}`}>Machine Maintenance</a>
+                        <a href="/services#business-consultation" class={`block px-3 py-2 hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/services#business-consultation') ? 'text-button-active' : ''}`}>Business Consultation</a>
+                    </div>
+                </div>
+                <a href="/classes" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/classes/' ? 'text-button-active' : ''}`}>Classes</a>
                 <a href="/blog" class={`hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/blog')  ? 'text-button-active' : ''}`}>Blog</a>
                 <a href="/about" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/about/' ? 'text-button-active' : ''}`}>About</a>
                 <a href="/contact" class={`hover:text-amber-500 transition-all duration-300 ${currentPath === '/contact/' ? 'text-button-active' : ''}`}>Contact</a>
-                <a href="/shop" class={`hover:bg-amber-500 rounded p-2 transition-all duration-300 ${currentPath === '/shop/' ? 'bg-button-active' : ''}`}>
+                <a href="/shop" class={`hover:bg-amber-500 rounded w-8 h-8 p-2 transition-all duration-300 ${currentPath === '/shop/' ? 'bg-button-active' : ''}`}>
                     <img class="w-5" src="/icons/shop-icon.png" />
                 </a>
             </div>
@@ -48,7 +69,6 @@ const currentPath = Astro.url.pathname;
             </button>
         </div>
     </div>
-
     <!-- Sliding Mobile Menu Panel -->
     <div
             x-show="open"
@@ -67,7 +87,8 @@ const currentPath = Astro.url.pathname;
         <div class="p-6">
             <a href="/" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/' ? 'text-button-active' : ''}`}>Home</a>
             <a href="/services" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/services/' ? 'text-button-active' : ''}`}>Services</a>
-            <a href="/blog" class={`hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/blog') ? 'text-button-active' : ''}`}>Blog</a>
+            <a href="/classes" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/classes/' ? 'text-button-active' : ''}`}>Classes</a>
+            <a href="/blog" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath.startsWith('/blog') ? 'text-button-active' : ''}`}>Blog</a>
             <a href="/about" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/about/' ? 'text-button-active' : ''}`}>About</a>
             <a href="/contact" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/contact/' ? 'text-button-active' : ''}`}>Contact</a>
             <a href="/shop" class={`block py-2 hover:text-amber-500 transition-all duration-300 ${currentPath === '/shop/' ? 'text-button-active' : ''}`}>Shop</a>

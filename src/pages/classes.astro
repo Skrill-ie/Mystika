@@ -4,8 +4,8 @@ import BaseLayout from '../layouts/Layout.astro';
 import PinLocation from "../assets/pin.astro";
 import ClassDate from  "../assets/time.astro";
 
-const nocache = Math.floor(Date.now() / 60000);
-const response = await fetch(`https://script.google.com/macros/s/AKfycbzMlI0U5odxkEcQpqqBGB5gOt9rX0Tc8xQUZtaTqoQfw_4b-y82LVMKPkTv1ZM2qDk7/exec?nocache=${nocache}`,{
+
+const response = await fetch('https://script.google.com/macros/s/AKfycbzr6xPM7By2WN2cOeTCkAeaT7jemTz7VfjzjM3pIQqXN5u20A7_tDkNBtFuNnlzYA1j/exec',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -138,7 +138,7 @@ const classes = await response.json();
                                     action: 'enrollStudent'
                                   };
 
-                                  fetch('https://script.google.com/macros/s/AKfycbzMlI0U5odxkEcQpqqBGB5gOt9rX0Tc8xQUZtaTqoQfw_4b-y82LVMKPkTv1ZM2qDk7/exec', {
+                                  fetch('https://script.google.com/macros/s/AKfycbzr6xPM7By2WN2cOeTCkAeaT7jemTz7VfjzjM3pIQqXN5u20A7_tDkNBtFuNnlzYA1j/exec', {
                                     method: 'POST',
                                     headers: {
                                       'Content-Type': 'application/x-www-form-urlencoded'
